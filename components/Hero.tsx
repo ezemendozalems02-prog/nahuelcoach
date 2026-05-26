@@ -136,9 +136,10 @@ export default function Hero() {
       {/* Full-bleed background image */}
       <motion.div style={{ scale: bgScale }} className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+          className="absolute inset-0 bg-cover transition-all duration-1000"
           style={{
             backgroundImage: `url('${bgImg}')`,
+            backgroundPosition: "83% center",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050509]/98 via-[#050509]/80 to-[#050509]/25" style={{ opacity: 0.8 }} />
