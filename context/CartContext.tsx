@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
 import type { Routine as Program } from "@/types/admin";
 
+import { getSettingsFromStorage } from "@/lib/local-storage-service";
+
 export interface CartItem {
   program: Program;
   quantity: number;
@@ -73,12 +75,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const checkout = useCallback(() => {
     if (items.length === 0) return;
     const itemsList = items
-      .map((i) => `- ${i.program.name} x${i.quantity} ($${i.program.price * i.quantity})`)
+      .map((i) => `- ${i.program.name} x${i.quantity} ($${(i.program.price * i.quantity).toLocaleString("es-AR")} ARS)`)
       .join("\n");
     const message = encodeURIComponent(
-      `Hola Nahuel! 👋\n\nQuiero comprar:\n${itemsList}\n\n💰 Total: $${total}\n\nMi nombre:\nMi objetivo principal:\n\n¿Podemos coordinar?`
+      `Hola Nahuel! 👋\n\nQuiero comprar:\n${itemsList}\n\n💰 Total: $${total.toLocaleString("es-AR")} ARS\n\nMi nombre:\nMi objetivo principal:\n\n¿Podemos coordinar?`
     );
-    window.open(`https://wa.me/5491100000000?text=${message}`, "_blank");
+    const settings = typeof window !== "undefined" ? getSettingsFromStorage() : null;
+    const whatsappNum = settings?.whatsappNumber || "5491100000000";
+    window.open(`https://wa.me/${whatsappNum}?text=${message}`, "_blank");
   }, [items, total]);
 
   return (

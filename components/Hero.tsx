@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { getSettings, getBanners } from "@/lib/data-service";
-import { SiteSettings, Banner } from "@/types/admin";
+import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { getSettings } from "@/lib/data-service";
+import { SiteSettings } from "@/types/admin";
 
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -105,9 +105,9 @@ function MarqueeStrip() {
 }
 
 const stats = [
-  { value: "500+", label: "atletas transformados" },
-  { value: "5+", label: "años de experiencia" },
-  { value: "98%", label: "tasa de éxito" },
+  { value: "10 Años", label: "entrenando su cuerpo" },
+  { value: "4+ Años", label: "coacheando personas" },
+  { value: "98%", label: "tasa de éxito integral" },
 ];
 
 export default function Hero() {
@@ -116,18 +116,12 @@ export default function Hero() {
   const textY = useTransform(scrollY, [0, 600], [0, 55]);
 
   const [settings, setSettings] = useState<SiteSettings | null>(null);
-  const [banners, setBanners] = useState<Banner[]>([]);
-  const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
     async function loadHeroConfig() {
       try {
-        const [loadedSettings, loadedBanners] = await Promise.all([
-          getSettings(),
-          getBanners()
-        ]);
+        const loadedSettings = await getSettings();
         setSettings(loadedSettings);
-        setBanners(loadedBanners.filter(b => b.active).sort((a, b) => a.order - b.order));
       } catch (err) {
         console.error(err);
       }
@@ -135,35 +129,7 @@ export default function Hero() {
     loadHeroConfig();
   }, []);
 
-  useEffect(() => {
-    if (banners.length <= 1) return;
-    const intv = setInterval(() => {
-      setCurrentIdx(p => (p + 1) % banners.length);
-    }, 6000);
-    return () => clearInterval(intv);
-  }, [banners]);
-
-  const hasBanners = banners.length > 0;
-  const activeB = hasBanners ? banners[currentIdx] : null;
-
-  const bgImg = activeB 
-    ? activeB.imageDesktop 
-    : "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=85";
-
-  const overlayOpacity = activeB ? activeB.overlayOpacity / 100 : 0.8;
-
-  const heroTitle = activeB 
-    ? activeB.title 
-    : (settings?.heroTitle || "Tu mejor versión comienza hoy.");
-
-  const heroSubtitle = activeB
-    ? activeB.subtitle
-    : (settings?.heroSubtitle || "Entrenamiento diseñado para transformar tu cuerpo, fortalecer tu mentalidad y construir hábitos que duran toda la vida.");
-
-  const ctaText = activeB?.buttonText || settings?.heroCtaText || "Aplicar al coaching";
-  const ctaLink = activeB?.buttonLink || "#mentorias";
-
-  const titleWords = heroTitle.split(" ");
+  const bgImg = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1600&q=85";
 
   return (
     <section className="relative min-h-[100dvh] overflow-hidden bg-[#050509]">
@@ -175,7 +141,7 @@ export default function Hero() {
             backgroundImage: `url('${bgImg}')`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050509]/98 via-[#050509]/80 to-[#050509]/25" style={{ opacity: overlayOpacity }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050509]/98 via-[#050509]/80 to-[#050509]/25" style={{ opacity: 0.8 }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050509] via-transparent to-[#050509]/55" />
       </motion.div>
 
@@ -191,119 +157,113 @@ export default function Hero() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 min-h-[100dvh] flex items-center pt-24 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 min-h-[100dvh] flex items-center pt-28 pb-24">
         <div className="w-full grid grid-cols-1 items-center gap-0">
 
           {/* Left: Text */}
-          <motion.div style={{ y: textY }}>
-            {/* Eyebrow line */}
+          <motion.div style={{ y: textY }} className="max-w-4xl">
+            
+            {/* Dual upper text eyebrow */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
-              className="flex items-center gap-3 mb-8"
+              className="flex flex-col gap-2 mb-6"
             >
-              <div className="w-10 h-px bg-[#0066FF]" />
-              <span className="text-[#0066FF] text-[10px] font-bold tracking-[0.42em] uppercase">
-                Coaching Premium · {settings?.brandName || "Argentina"}
-              </span>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-px bg-emerald-400" />
+                <span className="text-emerald-400 text-[10px] font-bold tracking-[0.3em] uppercase flex items-center gap-1.5">
+                  ⚡ Método integral para transformar cuerpo, energía y hábitos
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-px bg-[#0066FF]" />
+                <span className="text-[#00CCFF] text-[10px] font-bold tracking-[0.3em] uppercase flex items-center gap-1.5">
+                  💪 Entrená con estructura, aliméntate con claridad y sostené tu cambio
+                </span>
+              </div>
             </motion.div>
 
-            {/* Massive headline — each line animates in from below */}
-            <div className="mb-10 flex flex-wrap gap-x-3.5 gap-y-1 max-w-3xl">
-              {titleWords.map((word, i) => (
-                <div key={i} className="overflow-hidden">
-                  <motion.div
-                    initial={{ y: "110%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 70,
-                      damping: 18,
-                      delay: 0.15 + i * 0.08,
-                    }}
-                  >
-                    {i === Math.floor(titleWords.length / 2) ? (
-                      <span
-                        className="font-black tracking-tighter leading-[0.9] block"
-                        style={{
-                          fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)",
-                          background:
-                            "linear-gradient(135deg, #0066FF 20%, #00CCFF 100%)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                        }}
-                      >
-                        {word}
-                      </span>
-                    ) : (
-                      <span
-                        className="font-black tracking-tighter leading-[0.9] text-white block"
-                        style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)" }}
-                      >
-                        {word}
-                      </span>
-                    )}
-                  </motion.div>
-                </div>
-              ))}
+            {/* Massive headline - Transformá tu cuerpo. Recuperá tu energía. Volvé a confiar en vos. */}
+            <div className="mb-6 flex flex-col gap-1 max-w-3xl">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 70, damping: 18, delay: 0.2 }}
+                className="font-black tracking-tighter leading-[0.95] text-white"
+                style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)" }}
+              >
+                Transformá tu cuerpo.<br />
+                <span className="gradient-text">Recuperá tu energía.</span><br />
+                <span className="text-white">Volvé a confiar en vos.</span>
+              </motion.h1>
             </div>
 
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: 0.55,
-              }}
-              className="text-white/45 text-lg leading-relaxed mb-10 font-light max-w-[46ch]"
+              transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.45 }}
+              className="text-white/70 text-base sm:text-lg leading-relaxed mb-6 font-light max-w-3xl"
             >
-              {heroSubtitle}
+              Impacto Fitness es un método de transformación integral para personas con poco tiempo que quieren dejar de improvisar, ordenar sus hábitos y construir un cuerpo más fuerte, liviano y funcional.
+            </motion.p>
+
+            {/* Authority Text */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.55 }}
+              className="text-white/45 text-sm sm:text-base leading-relaxed mb-8 font-light max-w-2xl border-l-2 border-[#0066FF] pl-4"
+            >
+              Te guío con entrenamiento, alimentación consciente, mentalidad y estructura para que puedas sostener el proceso más allá de la motivación inicial.
             </motion.p>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: 0.65,
-              }}
-              className="flex flex-wrap gap-3 mb-14"
+              transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.65 }}
+              className="flex flex-wrap gap-4 items-center mb-4"
             >
               <Link
-                href={ctaLink}
-                className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-2xl btn-primary text-white font-semibold text-sm"
+                href="#recursos"
+                className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl btn-primary text-white font-bold text-sm shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)] transition-all"
               >
-                {ctaText}
+                Ver planes
                 <ArrowRight
                   size={15}
                   className="group-hover:translate-x-1 transition-transform"
                 />
               </Link>
+              
               <Link
-                href="/rutinas"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl text-white/55 hover:text-white font-semibold text-sm transition-colors duration-300"
+                href="#asesorias"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-white/70 hover:text-white font-bold text-sm transition-colors duration-300"
                 style={{
                   border: "1px solid rgba(255,255,255,0.08)",
                   background: "rgba(255,255,255,0.03)",
                 }}
               >
-                Ver programas
+                Quiero una asesoría personalizada
               </Link>
             </motion.div>
 
-            {/* Stats — editorial row, no icons, no boxes */}
+            {/* Microcopy */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.75 }}
+              className="text-white/25 text-xs font-semibold mb-12 tracking-wide"
+            >
+              ⚡ Elegí cómo querés empezar: con una rutina, un recurso digital o un proceso personalizado.
+            </motion.p>
+
+            {/* Stats row */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
+              transition={{ delay: 0.85 }}
               className="flex gap-10 lg:gap-14 border-t border-white/5 pt-8"
             >
               {stats.map((stat, i) => (
@@ -315,7 +275,7 @@ export default function Hero() {
                     type: "spring",
                     stiffness: 100,
                     damping: 20,
-                    delay: 0.9 + i * 0.08,
+                    delay: 0.85 + i * 0.08,
                   }}
                 >
                   <div
@@ -336,7 +296,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
+        transition={{ delay: 1.4 }}
         className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
       >
         <span className="text-white/20 text-[9px] font-bold tracking-[0.4em] uppercase">

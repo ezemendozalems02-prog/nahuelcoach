@@ -9,7 +9,7 @@ export interface Program {
   originalPrice?: number;
   duration: string;
   level: "Principiante" | "Intermedio" | "Avanzado" | "Todos los niveles";
-  badge?: "Más elegido" | "Premium" | "Recomendado" | "Nuevo";
+  badge?: "Más elegido" | "Premium" | "Recomendado" | "Nuevo" | string;
   image: string;
   color: string;
   benefits: string[];
@@ -18,378 +18,277 @@ export interface Program {
   expectedResults: string[];
   category: string;
   featured?: boolean;
+  active?: boolean;
+  order?: number;
 }
 
 export const programs: Program[] = [
   {
     id: "1",
-    slug: "plan-inicial",
-    name: "Plan Inicial",
-    subtitle: "Tu primer paso hacia la transformación",
-    description:
-      "El punto de partida perfecto para comenzar tu camino fitness con bases sólidas y resultados reales desde la primera semana.",
-    longDescription:
-      "El Plan Inicial está diseñado para personas que quieren comenzar de forma correcta, sin errores ni lesiones. Aprenderás la técnica perfecta, construirás una base sólida y entenderás los principios del entrenamiento que te acompañarán toda la vida.",
-    price: 29,
-    originalPrice: 49,
+    slug: "rutina-express-30-min",
+    name: "Rutina Express 30 Min",
+    subtitle: "Activá tu cuerpo y constancia",
+    description: "Rutinas súper efectivas de 30 minutos diseñadas para personas ocupadas. Activa tu energía, mejora tu tono muscular y empieza a construir el hábito de entrenar sin excusas.",
+    longDescription: "La Rutina Express 30 Min es la solución ideal para quienes sienten que no tienen tiempo para entrenar. Con sesiones optimizadas de 30 minutos de alta eficiencia basada en ejercicios compuestos, lograrás activar tu metabolismo, quemar calorías y tonificar tus músculos de manera simple, rápida y sin rodeos.",
+    price: 25000,
+    originalPrice: 40000,
     duration: "4 semanas",
-    level: "Principiante",
-    badge: "Recomendado",
-    image:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+    level: "Todos los niveles",
+    badge: "Nuevo",
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&q=80",
     color: "#0066FF",
     benefits: [
-      "Técnica perfecta desde el inicio",
-      "Rutinas adaptadas a tu nivel",
-      "Guía nutricional básica",
-      "Soporte por WhatsApp",
-      "Plan de progresión semanal",
-      "Videos explicativos de cada ejercicio",
+      "Rutina estructurada por días",
+      "Ejercicios simples y efectivos",
+      "Adaptable a gimnasio o casa",
+      "Ideal para activar energía y constancia",
+      "Guía básica de progresión"
     ],
     includes: [
-      "PDF con rutinas semanales",
-      "Videos demostrativos en HD",
-      "Guía nutricional de inicio",
-      "Soporte por WhatsApp por 4 semanas",
-      "Ficha de seguimiento",
-      "Acceso a comunidad privada",
+      "Rutina en PDF de alta definición",
+      "Demostración técnica en video",
+      "Adaptación 100% para casa o gimnasio",
+      "Guía básica para aumentar cargas progresivamente",
+      "Soporte técnico de dudas por WhatsApp"
     ],
     forWho: [
-      "Personas sin experiencia previa en el gym",
-      "Quienes regresan al entrenamiento tras una pausa",
-      "Personas que quieren aprender la técnica correcta",
-      "Quienes buscan un plan claro y estructurado",
+      "Personas con agendas complejas y poco tiempo libre",
+      "Quienes quieren reactivar su cuerpo tras una pausa larga",
+      "Principiantes que buscan arrancar con rutinas sencillas de sostener",
+      "Buscadores de constancia física duradera"
     ],
     expectedResults: [
-      "Dominio de los movimientos básicos",
-      "Mejora de la postura y movilidad",
-      "Primeros cambios físicos visibles",
-      "Hábito de entrenamiento establecido",
+      "Aumento inmediato en tus niveles de energía diarios",
+      "Consistencia de entrenamiento establecida",
+      "Mejora del tono muscular y resistencia cardiovascular",
+      "Activación del metabolismo basal"
     ],
-    category: "Iniciación",
+    category: "Recursos Digitales",
     featured: true,
+    active: true,
+    order: 1
   },
   {
     id: "2",
+    slug: "guia-alimentacion-consciente",
+    name: "Guía de Alimentación Consciente",
+    subtitle: "Comé mejor sin vivir restringido",
+    description: "Principios fundamentales para ordenar tu alimentación diaria con claridad. Aprende a distribuir tus porciones, organizar tus comidas y comer lo que te gusta de forma inteligente.",
+    longDescription: "La Guía de Alimentación Consciente de Nahuel Coach te enseña a reprogramar tu relación con la comida. Olvidate de las dietas restrictivas y los enfoques insostenibles. Aprenderás las bases científicas y prácticas de la nutrición para comer rico, sentirte con vitalidad constante y alcanzar tus objetivos físicos sin obsesiones.",
+    price: 25000,
+    originalPrice: 40000,
+    duration: "Guía digital",
+    level: "Todos los niveles",
+    badge: "Recomendado",
+    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80",
+    color: "#00CCFF",
+    benefits: [
+      "Principios básicos de alimentación",
+      "Organización simple de comidas",
+      "Ideas para déficit, mantenimiento o volumen",
+      "Lista de alimentos recomendados",
+      "Estrategia para sostener sin obsesionarte"
+    ],
+    includes: [
+      "Ebook digital interactivo en formato PDF",
+      "Lista inteligente de compras para el supermercado",
+      "Guía para estimación visual de porciones",
+      "Estrategia paso a paso para eventos sociales sin culpa",
+      "Soporte de dudas nutricionales básicas por WhatsApp"
+    ],
+    forWho: [
+      "Personas cansadas del efecto rebote de dietas estrictas",
+      "Quienes deseen aprender a comer de manera equilibrada",
+      "Quienes busquen organizar su cocina de forma práctica y veloz",
+      "Buscadores de una mejor digestión y vitalidad diaria"
+    ],
+    expectedResults: [
+      "Pérdida de peso o ganancia muscular sostenible en el tiempo",
+      "Focalización mental y reducción de ansiedad por la comida",
+      "Independencia absoluta para elegir qué comer diariamente",
+      "Establecimiento de hábitos alimenticios duraderos"
+    ],
+    category: "Recursos Digitales",
+    featured: true,
+    active: true,
+    order: 2
+  },
+  {
+    id: "3",
+    slug: "pack-impacto-inicial",
+    name: "Pack Impacto Inicial",
+    subtitle: "El combo de entrenamiento y hábitos para tu cambio",
+    description: "La estructura física, mental y alimenticia que necesitas para empezar a ver cambios reales. Incluye rutina de entrenamiento, guía nutricional y checklist de hábitos diarios.",
+    longDescription: "El Pack Impacto Inicial combina entrenamiento y nutrición en una sola estructura unificada de alto impacto. Ideal para quienes quieren ordenar su vida de forma integral, este combo te entrega la rutina perfecta de activación física y los hábitos fundamentales para forjar disciplina, constancia y un cuerpo más fuerte.",
+    price: 35000,
+    originalPrice: 55000,
+    duration: "6 semanas",
+    level: "Principiante",
+    badge: "Más elegido",
+    image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&q=80",
+    color: "#10B981",
+    benefits: [
+      "Rutina de entrenamiento",
+      "Guía de alimentación",
+      "Checklist de hábitos diarios",
+      "Organización semanal",
+      "Recursos prácticos"
+    ],
+    includes: [
+      "Plan de Entrenamiento de 6 semanas (Gym/Casa)",
+      "Guía de Alimentación Consciente en PDF",
+      "Ficha Interactiva de Checklist de Hábitos Diarios",
+      "Planificador de Rutina y Comidas Semanal",
+      "Acompañamiento básico directo por WhatsApp"
+    ],
+    forWho: [
+      "Principiantes decididos a construir bases de acero desde cero",
+      "Personas estancadas que necesitan dirección y estructura",
+      "Quienes busquen un cambio tanto físico como de hábitos cotidianos",
+      "Buscadores de organización y disciplina consciente"
+    ],
+    expectedResults: [
+      "Reducción notable de porcentaje de grasa y tonificación física",
+      "Automatización de hábitos saludables clave (sueño, agua, entreno)",
+      "Aumento sostenido de la autoestima y auto-confianza",
+      "Organización integral de tu semana fit"
+    ],
+    category: "Recursos Digitales",
+    featured: true,
+    active: true,
+    order: 3
+  },
+  {
+    id: "4",
+    slug: "recetario-impacto-fitness",
+    name: "Recetario Impacto Fitness",
+    subtitle: "Comidas deliciosas, rápidas y altas en proteína",
+    description: "Recetas saludables, prácticas y con excelente aporte proteico. Opciones dulces, saladas e ideas rápidas para sostener tu alimentación con total placer.",
+    longDescription: "El Recetario Impacto Fitness fue creado para desmitificar que comer sano es aburrido o insípido. Contiene una recopilación de preparaciones de alto contenido proteico que te ayudarán a construir músculo y quemar grasa disfrutando cada bocado. Con recetas dulces y saladas sumamente prácticas, cocinarás platos premium en minutos.",
+    price: 20000,
+    originalPrice: 32000,
+    duration: "Guía digital",
+    level: "Todos los niveles",
+    badge: "Premium",
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+    color: "#7B2FFF",
+    benefits: [
+      "Recetas dulces",
+      "Recetas saladas",
+      "Opciones altas en proteína",
+      "Ideas rápidas",
+      "Comidas fáciles de sostener"
+    ],
+    includes: [
+      "Ebook de Recetas con macros detallados por porción",
+      "Guía de reemplazo de ingredientes para adaptarlo a tus gustos",
+      "Ideas de meriendas y snacks proteicos exprés",
+      "Opciones de postres saludables para calmar la ansiedad",
+      "Contacto directo por dudas de preparación vía WhatsApp"
+    ],
+    forWho: [
+      "Quienes buscan comer exquisito sin sabotear sus metas físicas",
+      "Personas con poco tiempo para la cocina diaria",
+      "Deportistas que desean aumentar su ingesta de proteínas de forma rica",
+      "Amantes de los dulces que busquen versiones fit"
+    ],
+    expectedResults: [
+      "Aumento en la masa muscular gracias a un óptimo aporte proteico",
+      "Adherencia del 100% a tu plan nutricional gracias al disfrute culinario",
+      "Ahorro de tiempo diario en la cocina con ideas sencillas",
+      "Mayor saciedad y control del apetito"
+    ],
+    category: "Recursos Digitales",
+    featured: true,
+    active: true,
+    order: 4
+  },
+  {
+    id: "5",
     slug: "plan-transformacion",
     name: "Plan Transformación",
     subtitle: "Cambia tu físico, cambia tu vida",
-    description:
-      "Un programa intensivo de 12 semanas diseñado para transformar tu cuerpo con periodización avanzada, nutrición precisa y mentalidad ganadora.",
-    longDescription:
-      "El Plan Transformación es nuestro programa más completo para quienes ya tienen base y quieren llevar su físico al siguiente nivel. Combina entrenamiento de hipertrofia, cardio estratégico y nutrición personalizada para resultados máximos.",
-    price: 79,
-    originalPrice: 129,
+    description: "Un programa intensivo de 12 semanas diseñado para transformar tu cuerpo con periodización avanzada, nutrición precisa y mentalidad ganadora.",
+    longDescription: "El Plan Transformación es un proceso completo de 12 semanas para quienes ya tienen una base de entrenamiento y desean dar un salto estético y funcional rotundo. Diseñado con periodización avanzada de cargas en 3 fases y guías de macros precisas, esculpirás tu físico al máximo nivel de manera inteligente y disciplinada.",
+    price: 80000,
+    originalPrice: 125000,
     duration: "12 semanas",
     level: "Intermedio",
     badge: "Más elegido",
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
     color: "#00CCFF",
     benefits: [
       "Periodización avanzada en 3 fases",
       "Nutrición personalizada con macros",
       "Entrenamiento de hipertrofia científico",
       "Cardio estratégico para quemar grasa",
-      "Seguimiento semanal de progreso",
-      "Ajustes en tiempo real",
+      "Seguimiento de progreso"
     ],
     includes: [
-      "Programa completo de 12 semanas",
-      "Plan nutricional con macros",
-      "Videos de técnica avanzada",
-      "Soporte premium por WhatsApp",
-      "Check-in semanal con Nahuel",
-      "Calculadora de macros personalizada",
-      "Acceso a comunidad VIP",
+      "Planificación completa de entrenamiento en 3 bloques",
+      "Guía avanzada de nutrición y cálculo de macronutrientes",
+      "Protocolos específicos de cardio HIIT y LISS",
+      "Calculadora de calorías personalizada",
+      "Comunidad VIP e intercambio por WhatsApp"
     ],
     forWho: [
-      "Personas con 6+ meses de experiencia",
-      "Quienes quieren una transformación real",
-      "Personas comprometidas con el proceso",
-      "Atletas recreativos que quieren subir su nivel",
+      "Personas con experiencia intermedia de 6+ meses de entrenamiento",
+      "Quienes quieran lograr una recomposición corporal máxima",
+      "Entrenadores o deportistas recreativos buscando planes estructurados"
     ],
     expectedResults: [
-      "Pérdida de 5-10kg de grasa",
-      "Ganancia muscular visible",
-      "Definición y tonicidad notable",
-      "Mejora de rendimiento atlético",
+      "Pérdida drástica de porcentaje de grasa abdominal",
+      "Ganancia notable de fuerza e hipertrofia muscular",
+      "Mejora en la capacidad cardiopulmonar",
+      "Mentalidad competitiva aplicada al día a día"
     ],
     category: "Transformación",
-    featured: true,
+    featured: false,
+    active: true,
+    order: 5
   },
   {
-    id: "3",
-    slug: "coaching-premium",
-    name: "Coaching Premium",
-    subtitle: "El nivel más alto de personalización",
-    description:
-      "Mentoría completa con Nahuel. Planes 100% personalizados, videollamadas semanales, ajustes en tiempo real y acceso directo ilimitado.",
-    longDescription:
-      "El Coaching Premium es para quien no acepta resultados mediocres. Trabajarás directamente con Nahuel con un plan completamente diseñado para tu cuerpo, objetivos y estilo de vida. Esto no es un programa genérico, es tu programa.",
-    price: 199,
-    originalPrice: 299,
-    duration: "8 semanas",
-    level: "Todos los niveles",
-    badge: "Premium",
-    image:
-      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80",
-    color: "#7B2FFF",
-    benefits: [
-      "Plan 100% personalizado para ti",
-      "Videollamada semanal con Nahuel",
-      "Ajustes de plan cada semana",
-      "Nutrición individualizada",
-      "Soporte 24/7 por WhatsApp",
-      "Seguimiento de métricas diarias",
-    ],
-    includes: [
-      "Onboarding completo (evaluación física)",
-      "Plan de entrenamiento personalizado",
-      "Plan nutricional detallado",
-      "4 videollamadas con Nahuel",
-      "Soporte ilimitado por WhatsApp",
-      "Ajustes semanales del plan",
-      "Ficha de medidas y progreso",
-      "Acceso a biblioteca de ejercicios",
-    ],
-    forWho: [
-      "Personas que quieren lo mejor",
-      "Quienes han intentado todo sin resultados",
-      "Atletas que quieren preparación específica",
-      "Personas con necesidades especiales o lesiones",
-    ],
-    expectedResults: [
-      "Transformación física garantizada",
-      "Cambio de hábitos permanente",
-      "Mentalidad y disciplina de élite",
-      "Resultados documentados semana a semana",
-    ],
-    category: "Premium",
-    featured: true,
-  },
-  {
-    id: "4",
+    id: "6",
     slug: "full-body",
     name: "Full Body Power",
     subtitle: "Todo el cuerpo, máxima eficiencia",
-    description:
-      "Entrenamiento de cuerpo completo 3 días por semana. Ideal para optimizar tiempo sin sacrificar resultados.",
-    longDescription:
-      "Full Body Power es el programa ideal para quienes tienen poco tiempo pero quieren resultados serios. 3 sesiones por semana de alta eficiencia que activan cada grupo muscular con ejercicios compuestos y progresión inteligente.",
-    price: 39,
-    originalPrice: 59,
+    description: "Entrenamiento de cuerpo completo 3 días por semana. Ideal para optimizar tiempo sin sacrificar resultados reales.",
+    longDescription: "Full Body Power activa todo tu cuerpo en cada sesión. Es el esquema óptimo para quienes desean entrenar solo 3 veces por semana con máxima eficiencia utilizando movimientos compuestos de alta demanda metabólica.",
+    price: 45000,
+    originalPrice: 65000,
     duration: "8 semanas",
     level: "Principiante",
-    image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
     color: "#0066FF",
     benefits: [
       "Solo 3 días por semana",
       "Ejercicios compuestos de alto rendimiento",
       "Progresión de cargas incluida",
-      "Opción gym y opción casa",
-      "Cardio integrado al final de sesión",
+      "Opción gym y opción casa"
     ],
     includes: [
-      "Programa de 8 semanas",
-      "Versión gym y versión casa",
-      "Guía de progresión",
-      "Videos de técnica",
-      "Soporte por WhatsApp",
+      "Rutina Full Body de 3 días para gimnasio",
+      "Variante adaptable para entrenar en el hogar",
+      "Videos explicativos de la ejecución de cada movimiento",
+      "Esquema de progresión de cargas ondulatorio",
+      "Contacto de resolución de dudas vía WhatsApp"
     ],
     forWho: [
-      "Personas con agenda apretada",
-      "Principiantes e intermedios",
-      "Quienes prefieren entrenar menos días",
-      "Personas que quieren base sólida",
+      "Personas ocupadas que solo pueden entrenar 3 días",
+      "Principiantes que desean construir una base motriz fuerte",
+      "Buscadores de alta frecuencia de entrenamiento muscular"
     ],
     expectedResults: [
-      "Mejora de fuerza general",
-      "Pérdida de grasa corporal",
-      "Mayor energía diaria",
-      "Cuerpo más tonificado",
+      "Incremento generalizado de fuerza en todo el cuerpo",
+      "Optimización de tiempos sin sacrificar desarrollo muscular",
+      "Activación física y bienestar global",
+      "Excelente gasto calórico semanal"
     ],
     category: "Fuerza",
-  },
-  {
-    id: "5",
-    slug: "definicion-extrema",
-    name: "Definición Extrema",
-    subtitle: "Marcación y definición máxima",
-    description:
-      "Programa especializado para reducir grasa al máximo, marcar abdomen y lograr definición muscular de alto nivel.",
-    longDescription:
-      "Definición Extrema es el programa que usamos para preparaciones de playa, competencias y cambios estéticos radicales. Combina entrenamiento de alta intensidad, cardio estratégico y nutrición en déficit controlado.",
-    price: 59,
-    originalPrice: 89,
-    duration: "10 semanas",
-    level: "Avanzado",
-    image:
-      "https://images.unsplash.com/photo-1549476464-37392f717541?w=800&q=80",
-    color: "#00CCFF",
-    benefits: [
-      "Protocolo anti-grasa específico",
-      "Abdomen definido en 10 semanas",
-      "Cardio HIIT integrado",
-      "Nutrición en déficit estratégico",
-      "Preservación máxima de músculo",
-    ],
-    includes: [
-      "Programa de 10 semanas",
-      "Plan nutricional en déficit",
-      "Rutinas de cardio HIIT",
-      "Guía de suplementación",
-      "Soporte por WhatsApp",
-      "Calculadora calórica",
-    ],
-    forWho: [
-      "Personas con experiencia previa",
-      "Quienes quieren definición máxima",
-      "Preparación de playa o competencia",
-      "Personas con base muscular construida",
-    ],
-    expectedResults: [
-      "Abdomen marcado y visible",
-      "Reducción de grasa significativa",
-      "Músculo preservado y definido",
-      "Físico estético de alto nivel",
-    ],
-    category: "Definición",
-  },
-  {
-    id: "6",
-    slug: "volumen-muscular",
-    name: "Volumen Muscular",
-    subtitle: "Construye masa muscular de verdad",
-    description:
-      "El programa definitivo para ganar músculo real con periodización científica, superávit calórico controlado y máxima hipertrofia.",
-    longDescription:
-      "Volumen Muscular está diseñado para maximizar la ganancia de masa muscular con ciencia. Usamos periodización ondulatoria, técnicas avanzadas de hipertrofia y nutrición en superávit inteligente para construir el físico que siempre quisiste.",
-    price: 49,
-    originalPrice: 79,
-    duration: "12 semanas",
-    level: "Intermedio",
-    image:
-      "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80",
-    color: "#7B2FFF",
-    benefits: [
-      "Hipertrofia científica comprobada",
-      "División de entrenamientos optimizada",
-      "Nutrición en superávit controlado",
-      "Técnicas avanzadas: drop sets, superseries",
-      "Progresión de cargas sistemática",
-    ],
-    includes: [
-      "12 semanas de programa completo",
-      "Plan nutricional para volumen",
-      "Guía de técnicas avanzadas",
-      "Calculadora de superávit calórico",
-      "Videos de ejercicios",
-      "Soporte por WhatsApp",
-    ],
-    forWho: [
-      "Personas que quieren ganar masa muscular",
-      "Intermedios y avanzados",
-      "Ectomorfos que luchan por ganar peso",
-      "Quienes quieren un físico más grande",
-    ],
-    expectedResults: [
-      "Ganancia de 3-6 kg de músculo",
-      "Mayor fuerza en todos los ejercicios",
-      "Físico más grande y definido",
-      "Mejora de composición corporal",
-    ],
-    category: "Volumen",
-  },
-  {
-    id: "7",
-    slug: "bajar-de-peso",
-    name: "Pérdida de Peso",
-    subtitle: "Resultados reales y sostenibles",
-    description:
-      "Programa holístico para perder peso de forma inteligente, sin dietas extremas, con hábitos que duran toda la vida.",
-    longDescription:
-      "El programa de Pérdida de Peso de Nahuel va más allá de las calorías. Trabajamos mente, hábitos, alimentación y ejercicio de forma integrada para que pierdas peso de manera sostenible y nunca más lo recuperes.",
-    price: 44,
-    originalPrice: 69,
-    duration: "8 semanas",
-    level: "Todos los niveles",
-    image:
-      "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=800&q=80",
-    color: "#0066FF",
-    benefits: [
-      "Pérdida de grasa sostenible",
-      "Sin dietas extremas ni restricciones",
-      "Hábitos alimenticios para siempre",
-      "Entrenamiento adaptado",
-      "Mindset de transformación",
-    ],
-    includes: [
-      "Programa de 8 semanas",
-      "Guía nutricional completa",
-      "Lista de alimentos recomendados",
-      "Recetas fitness incluidas",
-      "Soporte por WhatsApp",
-      "Registro de progreso semanal",
-    ],
-    forWho: [
-      "Personas con sobrepeso que quieren cambiar",
-      "Quienes han fallado en otras dietas",
-      "Personas que quieren hábitos sostenibles",
-      "Todos los niveles de experiencia",
-    ],
-    expectedResults: [
-      "Pérdida de 4-8 kg de grasa",
-      "Mejora de energía y bienestar",
-      "Hábitos alimenticios establecidos",
-      "Mayor autoestima y confianza",
-    ],
-    category: "Pérdida de peso",
-  },
-  {
-    id: "8",
-    slug: "movilidad-y-flexibilidad",
-    name: "Movilidad & Flexibilidad",
-    subtitle: "Muévete mejor, vive mejor",
-    description:
-      "Programa especializado para mejorar movilidad articular, flexibilidad y calidad de movimiento. Ideal como complemento o programa independiente.",
-    longDescription:
-      "La movilidad es la base de todo rendimiento físico. Este programa combina estiramientos activos, trabajo de movilidad articular, yoga funcional y técnicas de recuperación para que te muevas con libertad total.",
-    price: 29,
-    duration: "6 semanas",
-    level: "Todos los niveles",
-    image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
-    color: "#00CCFF",
-    benefits: [
-      "Mejora de movilidad articular",
-      "Reducción de dolores posturales",
-      "Mayor rango de movimiento",
-      "Recuperación activa incluida",
-      "Ideal para todos los niveles",
-    ],
-    includes: [
-      "Programa de 6 semanas",
-      "Rutinas diarias de 20-30 min",
-      "Videos guiados con Nahuel",
-      "Guía de postura correcta",
-      "Soporte por WhatsApp",
-    ],
-    forWho: [
-      "Personas con dolor postural",
-      "Deportistas que quieren mejorar rendimiento",
-      "Quienes trabajan sentados muchas horas",
-      "Cualquier persona sin importar nivel",
-    ],
-    expectedResults: [
-      "Mejora notable de flexibilidad",
-      "Reducción de dolores musculares",
-      "Mayor libertad de movimiento",
-      "Mejor calidad de vida general",
-    ],
-    category: "Movilidad",
-  },
+    featured: false,
+    active: true,
+    order: 6
+  }
 ];
 
 export const getFeaturedPrograms = () => programs.filter((p) => p.featured);

@@ -201,7 +201,7 @@ export default function CartDrawer() {
                                 backgroundClip: "text",
                               }}
                             >
-                              ${item.program.price * item.quantity}
+                              ${(item.program.price * item.quantity).toLocaleString("es-AR")}
                             </span>
                             <button
                               onClick={() => removeItem(item.program.id)}
@@ -228,7 +228,7 @@ export default function CartDrawer() {
                 <div className="flex flex-col gap-2">
                   <div className="flex justify-between text-xs text-white/30">
                     <span>Subtotal</span>
-                    <span>${total}</span>
+                    <span>${total.toLocaleString("es-AR")} ARS</span>
                   </div>
                   <div
                     className="h-px"
@@ -249,12 +249,12 @@ export default function CartDrawer() {
                         backgroundClip: "text",
                       }}
                     >
-                      ${total}{" "}
+                      ${total.toLocaleString("es-AR")}{" "}
                       <span
                         className="text-sm font-normal tracking-normal"
                         style={{ WebkitTextFillColor: "rgba(255,255,255,0.3)" }}
                       >
-                        USD
+                        ARS
                       </span>
                     </span>
                   </div>

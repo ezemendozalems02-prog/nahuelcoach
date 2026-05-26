@@ -2,30 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { MessageCircle, Zap, ArrowUpRight } from "lucide-react";
 import { InstagramIcon, YoutubeIcon } from "@/components/SocialIcons";
 
 import { useState, useEffect } from "react";
 import { getSettings } from "@/lib/data-service";
 import { SiteSettings } from "@/types/admin";
-
-const links = {
-  pages: [
-    { label: "Inicio", href: "/" },
-    { label: "Sobre mí", href: "/#sobre-mi" },
-    { label: "Rutinas", href: "/rutinas" },
-    { label: "Impacto 1 a 1", href: "/impacto-1a1" },
-    { label: "FAQ", href: "/faq" },
-  ],
-  programs: [
-    { label: "Plan Inicial", href: "/rutinas/plan-inicial" },
-    { label: "Plan Transformación", href: "/rutinas/plan-transformacion" },
-    { label: "Coaching Premium", href: "/rutinas/coaching-premium" },
-    { label: "Full Body Power", href: "/rutinas/full-body" },
-    { label: "Ver todos", href: "/rutinas" },
-  ],
-};
 
 export default function Footer() {
   const pathname = usePathname();
@@ -52,8 +34,8 @@ export default function Footer() {
   const brandFirst = brandParts[0] || "NAHUEL";
   const brandSecond = brandParts.slice(1).join(" ") || "COACH";
 
-  const instagramLink = settings?.instagramUrl || "https://instagram.com";
-  const youtubeLink = settings?.youtubeUrl || "https://youtube.com";
+  const instagramLink = settings?.instagramUrl || "https://instagram.com/nahuelcoach";
+  const youtubeLink = settings?.youtubeUrl || "https://youtube.com/nahuelcoach";
   const whatsappLink = settings?.whatsappNumber 
     ? `https://wa.me/${settings.whatsappNumber}` 
     : "https://wa.me/5491100000000";
@@ -72,21 +54,27 @@ export default function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Main footer */}
-        <div className="py-14 lg:py-20 grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16">
+        <div className="py-14 lg:py-20 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0066FF] to-[#00CCFF] shadow-[0_0_20px_rgba(0,102,255,0.4)]">
                 <Zap size={18} className="text-white fill-white" />
               </div>
               <div>
-                <span className="text-white font-bold text-lg tracking-tight leading-none block uppercase">{brandFirst}</span>
-                <span className="gradient-text-cyan text-[10px] font-semibold tracking-[0.2em] uppercase leading-none block">{brandSecond}</span>
+                <span className="text-white font-black text-lg tracking-tight leading-none block uppercase">
+                  {brandFirst} <span className="text-white/40">{brandSecond}</span>
+                </span>
+                <span className="gradient-text-cyan text-[10px] font-semibold tracking-[0.2em] uppercase leading-none block">
+                  Impacto Fitness
+                </span>
               </div>
             </Link>
-            <p className="text-white/40 text-sm leading-relaxed max-w-[240px]">
-              Entrenamiento premium, resultados reales. Transformá tu cuerpo, mente y espíritu.
+            
+            <p className="text-white/40 text-sm leading-relaxed max-w-sm">
+              Nahuel Coach — Impacto Fitness. Entrenamiento, alimentación consciente, hábitos y transformación integral.
             </p>
+
             <div className="flex gap-2.5">
               {dynamicSocials.map((s) => {
                 const Icon = s.icon;
@@ -98,7 +86,6 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={s.label}
                     className="w-9 h-9 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all duration-300"
-                    style={{ "--hover-color": s.color } as React.CSSProperties}
                   >
                     <Icon size={16} />
                   </a>
@@ -107,84 +94,67 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Pages */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-5 tracking-wider uppercase">Páginas</h4>
-            <ul className="flex flex-col gap-3">
-              {links.pages.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-white/40 text-sm hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-5">
+            <h4 className="text-white font-semibold text-sm tracking-wider uppercase">Menú</h4>
+            <div className="grid grid-cols-2 gap-3">
+              <Link href="/" className="text-white/45 text-sm hover:text-white transition-colors">
+                Inicio
+              </Link>
+              <Link href="/#sobre-mi" className="text-white/45 text-sm hover:text-white transition-colors">
+                Sobre mí
+              </Link>
+              <Link href="#asesorias" className="text-white/45 text-sm hover:text-white transition-colors">
+                Planes
+              </Link>
+              <Link href="/rutinas" className="text-white/45 text-sm hover:text-white transition-colors">
+                Tienda
+              </Link>
+              <Link href="#comunidad" className="text-white/45 text-sm hover:text-white transition-colors">
+                Contenido gratuito
+              </Link>
+              <Link href="#contacto" className="text-white/45 text-sm hover:text-white transition-colors">
+                Contacto
+              </Link>
+            </div>
           </div>
 
-          {/* Programs */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-5 tracking-wider uppercase">Programas</h4>
-            <ul className="flex flex-col gap-3">
-              {links.programs.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-white/40 text-sm hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-5 tracking-wider uppercase">Contacto</h4>
+          {/* Contact Details */}
+          <div className="flex flex-col gap-5">
+            <h4 className="text-white font-semibold text-sm tracking-wider uppercase">Contacto</h4>
             <div className="flex flex-col gap-3">
               <a
-                href="https://wa.me/5491100000000"
+                href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-white/40 text-sm hover:text-white transition-colors"
+                className="group flex items-center gap-2.5 text-white/45 text-sm hover:text-white transition-colors"
               >
-                <MessageCircle size={14} className="text-[#25D366]" />
-                WhatsApp
+                <MessageCircle size={15} className="text-[#25D366]" />
+                WhatsApp Directo
                 <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
-                href="https://instagram.com"
+                href={instagramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-white/40 text-sm hover:text-white transition-colors"
+                className="group flex items-center gap-2.5 text-white/45 text-sm hover:text-white transition-colors"
               >
-                <InstagramIcon size={14} className="text-[#E1306C]" />
-                @nahuelcoach
-                <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-white/40 text-sm hover:text-white transition-colors"
-              >
-                <YoutubeIcon size={14} className="text-[#FF0000]" />
-                Nahuel Coach
+                <InstagramIcon size={15} className="text-[#E1306C]" />
+                Instagram: @nahuelcoach
                 <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
 
-            <div className="mt-6">
-              <Link
-                href="/impacto-1a1"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl btn-primary text-white text-xs font-semibold"
+            <div className="mt-2">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl btn-primary text-white text-xs font-bold"
               >
-                Aplicar ahora
+                Escribir ahora
                 <ArrowUpRight size={12} />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -192,10 +162,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-xs">
-            © {new Date().getFullYear()} Nahuel Coach. Todos los derechos reservados.
+            © {new Date().getFullYear()} Nahuel Coach — Impacto Fitness. Todos los derechos reservados.
           </p>
-          <p className="text-white/15 text-xs">
-            Diseñado para transformar vidas.
+          <p className="text-[#00CCFF] text-xs font-black tracking-widest uppercase">
+            Cuerpo fuerte. Mente clara. Energía ordenada.
           </p>
         </div>
       </div>

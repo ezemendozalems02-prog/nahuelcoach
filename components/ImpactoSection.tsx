@@ -1,22 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
-import { getPlans, getSettings } from "@/lib/data-service";
-import { Plan } from "@/types/admin";
+import { useState, useEffect } from "react";
+import { getSettings } from "@/lib/data-service";
 import {
   Zap,
   ArrowRight,
   MessageCircle,
   Sparkles,
   CheckCircle2,
-  Play,
-  Volume2,
-  Maximize2,
   Shield,
   Clock,
-  VolumeX,
+  Compass,
+  ArrowUpRight
 } from "lucide-react";
+import Link from "next/link";
 
 function spring(delay = 0) {
   return {
@@ -28,423 +26,447 @@ function spring(delay = 0) {
 }
 
 export default function ImpactoSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const [plans, setPlans] = useState<Plan[]>([]);
   const [whatsapp, setWhatsapp] = useState("5491100000000");
 
   useEffect(() => {
-    async function loadPlansData() {
+    async function loadSettings() {
       try {
-        const [loadedPlans, settings] = await Promise.all([
-          getPlans(),
-          getSettings()
-        ]);
-        setPlans(loadedPlans.filter(p => p.active).sort((a, b) => a.order - b.order));
+        const settings = await getSettings();
         if (settings?.whatsappNumber) {
           setWhatsapp(settings.whatsappNumber);
         }
       } catch (err) {
-        console.error("Failed to load plans in home", err);
+        console.error(err);
       }
     }
-    loadPlansData();
+    loadSettings();
   }, []);
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  const whatsappMentoriaMsg = `https://wa.me/${whatsapp}?text=${encodeURIComponent(
+    "Hola Nahuel! Me interesa postularme para la *Mentoría Impacto Fitness* de 12 semanas. Me gustaría coordinar una entrevista de diagnóstico."
+  )}`;
 
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
+  const whatsappBaseMsg = `https://wa.me/${whatsapp}?text=${encodeURIComponent(
+    "Hola Nahuel! Quiero unirme al plan de asesoría mensual *Impacto Base* de $70.000 ARS."
+  )}`;
 
-  const handleMaximize = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      }
-    }
-  };
+  const whatsappVitalMsg = `https://wa.me/${whatsapp}?text=${encodeURIComponent(
+    "Hola Nahuel! Quiero sumarme al acompañamiento intensivo *Impacto Vital* de $250.000 ARS."
+  )}`;
 
   return (
     <div className="relative bg-[#030307] overflow-hidden">
       
-      {/* 1. SECCIÓN DE PROGRAMAS VIP (MOVIDA HACIA ARRIBA Y EXPANDIDA) */}
+      {/* 5. ENTRENAMIENTO A DISTANCIA */}
       <section 
-        className="relative border-b border-white/5 bg-[#05050a] mentorias-vip-section"
-        style={{
-          paddingTop: "clamp(6rem, 8vw, 10rem)",
-          paddingBottom: "clamp(8rem, 10vw, 13rem)",
-        }}
+        id="entrenamiento-a-distancia"
+        className="relative pt-28 pb-20 lg:pt-36 lg:pb-28"
       >
-        
-        {/* Top Hairline */}
-        <div
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(0,102,255,0.25), rgba(0,204,255,0.2), transparent)",
-          }}
-        />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0066FF]/20 to-transparent" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#00CCFF]/3 blur-[140px] pointer-events-none" />
 
-        {/* Ambient Glows */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 50%, rgba(123,47,255,0.04) 0%, transparent 60%)",
-          }}
-        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
+            
+            {/* Left Column: Context copy */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={spring()}
+              className="flex flex-col gap-6 lg:gap-8"
+            >
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full self-start bg-[#0066FF]/5 border border-[#0066FF]/15">
+                <Compass size={12} className="text-[#00CCFF] animate-pulse" />
+                <span className="text-[#00CCFF] text-[10px] font-bold tracking-[0.25em] uppercase">
+                  Acompañamiento Remoto
+                </span>
+              </div>
+
+              <h2 className="font-black text-white leading-[0.95]" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
+                Entrenamiento<br />
+                <span className="gradient-text">a distancia</span>
+              </h2>
+
+              <h3 className="text-[#00CCFF] font-extrabold text-xl lg:text-2xl leading-tight">
+                “Quiero que entrenes con claridad, confianza y propósito.”
+              </h3>
+
+              <div className="flex flex-col gap-4 text-white/55 font-light text-base sm:text-lg leading-relaxed">
+                <p>
+                  ¿Sentís que ninguna rutina estándar se adapta realmente a tus horarios, lesiones o nivel actual? ¿Sos de los que empiezan con mucha motivación pero terminan abandonando a las pocas semanas por falta de guía real?
+                </p>
+                <p>
+                  El **Entrenamiento a Distancia** está diseñado de forma quirúrgica para resolver esto. No es un simple PDF descargable; es un sistema dinámico y cercano donde Nahuel analiza tu punto de partida y te acompaña paso a paso para que logres un físico fuerte y hábitos sostenibles.
+                </p>
+              </div>
+
+              <div className="w-16 h-[2px] bg-gradient-to-r from-[#0066FF] to-[#00CCFF] rounded-full mt-2" />
+            </motion.div>
+
+            {/* Right Column: Key Pointers list */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={spring(0.15)}
+              className="p-8 sm:p-10 rounded-3xl border border-white/5 bg-[#09090f]/50 backdrop-blur-xl relative overflow-hidden"
+              style={{
+                boxShadow: "0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03)"
+              }}
+            >
+              <h4 className="text-white font-extrabold text-lg sm:text-xl mb-6">
+                Beneficios del acompañamiento:
+              </h4>
+
+              <div className="flex flex-col gap-4">
+                {[
+                  "Plan de entrenamiento 100% adaptado a tus objetivos físicos.",
+                  "Diseño adecuado a tus horarios, espacio disponible y equipamiento.",
+                  "Corrección técnica y ajustes semanales según tu progreso real.",
+                  "Contacto directo y soporte ágil por WhatsApp.",
+                  "Guía nutricional simple, consciente y fácil de sostener.",
+                  "Seguimiento real de métricas, fatiga y descanso diario.",
+                  "Integración de hábitos, mentalidad y liderazgo personal."
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-3.5 items-start">
+                    <div className="mt-1 flex-shrink-0">
+                      <CheckCircle2 size={13} className="text-[#00CCFF]" />
+                    </div>
+                    <span className="text-white/70 text-xs sm:text-sm font-light leading-relaxed">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-white/35 text-[11px] font-semibold uppercase tracking-wider mt-8 block border-t border-white/5 pt-4">
+                ⚡ Elegí el plan que mejor se adapte a tu momento.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. PLANES DE ASESORÍA */}
+      <section 
+        id="asesorias"
+        className="relative py-20 lg:py-28 bg-[#05050a]"
+      >
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(123,47,255,0.03) 0%, transparent 60%)" }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={spring()}
-            className="text-center mb-20 lg:mb-24"
-          >
-            <div
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4"
+          <div className="text-center mb-16 lg:mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={spring()}
+            >
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4 bg-[#7B2FFF]/5 border border-[#7B2FFF]/15">
+                <Sparkles size={12} className="text-[#b685ff]" />
+                <span className="text-[#b685ff] text-[10px] font-bold tracking-[0.3em] uppercase">
+                  Coaching Premium
+                </span>
+              </div>
+              <h2 className="text-responsive-xl text-white font-black tracking-tight leading-none">
+                Planes de <span className="gradient-text">Asesoría Integral</span>
+              </h2>
+              <p className="text-white/45 text-base sm:text-lg font-light leading-relaxed mt-4 max-w-[55ch] mx-auto">
+                Llevá tu entrenamiento, nutrición y mentalidad al máximo nivel de personalización y acompañamiento técnico.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Grid de 3 Cards Premium */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 items-stretch max-w-6xl mx-auto">
+            
+            {/* Plan 1: Impacto Base */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={spring(0.05)}
+              className="group relative rounded-3xl p-6 sm:p-8 flex flex-col gap-6 border border-white/5 bg-[#09090f]/70"
               style={{
-                background: "rgba(0,102,255,0.06)",
-                border: "1px solid rgba(0,102,255,0.18)",
+                boxShadow: "0 20px 45px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.02)",
               }}
             >
-              <Sparkles size={12} className="text-[#00CCFF]" />
-              <span className="text-[#00CCFF] text-[10px] font-bold tracking-[0.3em] uppercase">
-                Opciones de Mentoría
-              </span>
-            </div>
-            <h2 className="text-responsive-xl text-white font-black tracking-tight leading-none">
-              Planes de <span className="gradient-text">Mentoría VIP</span>
-            </h2>
-            <p className="text-white/45 text-base sm:text-lg font-light leading-relaxed mt-4 max-w-[55ch] mx-auto">
-              Elegí el nivel de personalización y seguimiento que tu transformación física y mental exige.
-            </p>
-          </motion.div>
+              <div className="pb-5 border-b border-white/5 flex flex-col gap-2">
+                <span className="text-[#0066FF] text-xs font-black uppercase tracking-wider block">
+                  Impacto Base
+                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl sm:text-4xl font-black text-white">$70.000</span>
+                  <span className="text-white/45 text-[10px] uppercase font-bold tracking-wider">ARS / mes</span>
+                </div>
+                <p className="text-white/65 text-xs font-semibold leading-relaxed mt-1">
+                  “Estructura y dirección personalizada para tu progreso”
+                </p>
+              </div>
 
-          {/* Programs Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-            {plans.map((prog, idx) => {
-              const color = idx % 2 === 1 ? "#7B2FFF" : "#0066FF";
-              const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(
-                `Hola! Quiero unirme al plan VIP: *${prog.name}*`
-              )}`;
+              <div className="flex flex-col gap-3 my-2 flex-1">
+                {[
+                  "1 sesión de alineación inicial.",
+                  "Rutina personalizada con videos.",
+                  "Planificación de alimentación.",
+                  "Corrección técnica de ejercicios.",
+                  "Guía de entrenamiento + PDFs.",
+                  "Organización inicial de hábitos."
+                ].map((f, idx) => (
+                  <div key={idx} className="flex gap-2.5 items-start">
+                    <CheckCircle2 size={13} className="text-[#0066FF] mt-0.5 flex-shrink-0" />
+                    <span className="text-white/60 text-xs sm:text-sm font-light leading-relaxed">{f}</span>
+                  </div>
+                ))}
+              </div>
 
-              return (
-                <motion.div
-                  key={prog.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={spring(idx * 0.15)}
-                  className="group relative rounded-3xl overflow-hidden p-8 lg:p-10 flex flex-col gap-6 lg:gap-8 cursor-default"
-                  style={{
-                    background: "rgba(10, 10, 15, 0.75)",
-                    border: `1px solid rgba(255, 255, 255, ${idx === 1 ? 0.08 : 0.05})`,
-                    boxShadow: `0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03), 0 0 40px ${prog.glow}`,
-                    backdropFilter: "blur(20px)",
-                  }}
+              <div className="pt-4 border-t border-white/5">
+                <a
+                  href={whatsappBaseMsg}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-white font-bold text-sm bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all"
                 >
-                  {/* Header info */}
-                  <div className="flex items-center justify-between pb-5 border-b border-white/5">
-                    <div>
-                      <span
-                        className="text-xs font-black uppercase tracking-wider block mb-1"
-                        style={{ color }}
-                      >
-                        {prog.name}
-                      </span>
-                      <p className="text-white/40 text-xs">{prog.tag}</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl lg:text-4xl font-black text-white leading-none">
-                        {prog.price}
-                      </div>
-                      <span className="text-white/35 text-[10px] uppercase tracking-wider">
-                        / {prog.period}
-                      </span>
-                    </div>
-                  </div>
+                  Elegir Impacto Base
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
 
-                  {/* Description */}
-                  <p className="text-white/50 text-sm leading-relaxed font-light">
-                    {prog.desc}
-                  </p>
+            {/* Plan 2 Destacado: Impacto Vital */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={spring(0.15)}
+              className="group relative rounded-3xl p-6 sm:p-8 flex flex-col gap-6 border border-emerald-400/25 bg-[#09090f]/90"
+              style={{
+                boxShadow: "0 25px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04), 0 0 40px rgba(16,185,129,0.05)",
+                transform: "scale(1.025)"
+              }}
+            >
+              {/* Featured Badge */}
+              <div className="absolute top-0 right-8 -translate-y-1/2">
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[9px] font-black tracking-wider uppercase text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 backdrop-blur-md">
+                  <Sparkles size={8} className="fill-emerald-400" />
+                  MÁS ELEGIDO
+                </span>
+              </div>
 
-                  {/* Features List */}
-                  <div className="flex flex-col gap-3.5 my-2 flex-1">
-                    {prog.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex gap-3 items-start">
-                        <div className="mt-1 flex-shrink-0">
-                          <CheckCircle2 size={14} style={{ color }} />
-                        </div>
-                        <span className="text-white/65 text-xs lg:text-sm font-light leading-relaxed">
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="pb-5 border-b border-white/5 flex flex-col gap-2">
+                <span className="text-emerald-400 text-xs font-black uppercase tracking-wider block">
+                  Impacto Vital
+                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl sm:text-4xl font-black text-white">$250.000</span>
+                  <span className="text-white/45 text-[10px] uppercase font-bold tracking-wider">ARS / pago único</span>
+                </div>
+                <p className="text-white/65 text-xs font-semibold leading-relaxed mt-1">
+                  “Acompañamiento de 8 semanas para ordenar entrenamiento, alimentación y hábitos.”
+                </p>
+              </div>
 
-                  {/* Action CTA */}
-                  <div className="pt-4 border-t border-white/5 flex flex-col gap-3">
-                    <a
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl text-white font-bold text-sm transition-all duration-300 btn-primary shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)]"
-                    >
-                      Elegir {prog.name}
-                      <ArrowRight
-                        size={16}
-                        className="group-hover:translate-x-1 transition-transform duration-300"
-                      />
-                    </a>
+              <div className="flex flex-col gap-3 my-2 flex-1">
+                {[
+                  "Programa grabado de 14 clases.",
+                  "Sistema estructurado paso a paso.",
+                  "2 sesiones individuales profundas.",
+                  "Tareas diarias específicas.",
+                  "Corrección técnica prioritaria.",
+                  "Seguimiento diario por WhatsApp.",
+                  "Recetarios saludables completos.",
+                  "Ajustes constantes según progreso."
+                ].map((f, idx) => (
+                  <div key={idx} className="flex gap-2.5 items-start">
+                    <CheckCircle2 size={13} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-white/70 text-xs sm:text-sm font-semibold leading-relaxed">{f}</span>
                   </div>
-                </motion.div>
-              );
-            })}
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-white/5">
+                <a
+                  href={whatsappVitalMsg}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-white font-bold text-sm btn-primary shadow-[0_0_20px_rgba(0,102,255,0.25)]"
+                >
+                  Quiero Impacto Vital
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Plan 3: Mentoría Impacto Fitness */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={spring(0.25)}
+              className="group relative rounded-3xl p-6 sm:p-8 flex flex-col gap-6 border border-white/5 bg-[#09090f]/70"
+              style={{
+                boxShadow: "0 20px 45px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.02)",
+              }}
+            >
+              <div className="pb-5 border-b border-white/5 flex flex-col gap-2">
+                <span className="text-[#7B2FFF] text-xs font-black uppercase tracking-wider block">
+                  Mentoría Impacto Fitness
+                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-2xl sm:text-3xl font-black text-white">Consultar Valor</span>
+                </div>
+                <p className="text-white/65 text-xs font-semibold leading-relaxed mt-1">
+                  “Acompañamiento trimestral para reprogramar tu identidad”
+                </p>
+              </div>
+
+              <p className="text-white/45 text-[11px] leading-relaxed font-light mb-2">
+                Proceso intensivo de 12 semanas para transformar tu identidad física, trabajar las raíces de tu disciplina y potenciar todas las áreas de tu vida de forma integrada.
+              </p>
+
+              <div className="flex flex-col gap-2.5 flex-1 max-h-[220px] overflow-y-auto pr-1 select-none scrollbar-thin">
+                {[
+                  "Diagnóstico inicial completo de tus métricas.",
+                  "12 semanas de acompañamiento prioritario.",
+                  "1 sesión semanal 1 a 1 de check-in y feedback.",
+                  "Plan de entrenamiento adaptado científicamente.",
+                  "Guía nutricional estratégica y flexible.",
+                  "Corrección técnica diaria de tus movimientos.",
+                  "Organización y planificación de tu semana fit.",
+                  "Trabajo de mentalidad e identidad.",
+                  "Sistema antisabotaje & reprogramación mental.",
+                  "Orden emocional y disciplina consciente.",
+                  "Revisión y ajustes semanales del plan.",
+                  "Acompañamiento humano sumamente cercano.",
+                  "Entradas gratuitas a eventos presenciales."
+                ].map((f, idx) => (
+                  <div key={idx} className="flex gap-2.5 items-start">
+                    <CheckCircle2 size={12} className="text-[#7B2FFF] mt-0.5 flex-shrink-0" />
+                    <span className="text-white/60 text-xs leading-relaxed font-light">{f}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-white/5 flex flex-col gap-2">
+                <a
+                  href={whatsappMentoriaMsg}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-[#b685ff] border border-[#7B2FFF]/30 bg-[#7B2FFF]/5 hover:bg-[#7B2FFF]/10 transition-all font-bold text-sm"
+                >
+                  Aplicar a la mentoría
+                  <ArrowUpRight size={14} />
+                </a>
+                <span className="text-[10px] text-white/30 text-center font-bold uppercase tracking-wider block">
+                  ⚠️ Cupos limitados. Requiere entrevista.
+                </span>
+              </div>
+            </motion.div>
+
           </div>
 
         </div>
       </section>
 
-      {/* 2. SECCIÓN IMPACTO 1 A 1 (TOTALMENTE AISLADA ABAJO Y CON VSL VIDEO) */}
+      {/* 7. COMPARATIVA */}
       <section 
-        className="relative bg-black impacto-isolated-section"
-        style={{
-          paddingTop: "clamp(8rem, 10vw, 13rem)",
-          paddingBottom: "clamp(8rem, 10vw, 13rem)",
-        }}
+        id="comparativa"
+        className="relative py-20 lg:py-28"
       >
-        
-        {/* Glow orbs for VSL Area */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#0066FF]/5 blur-[150px] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#0066FF]/2 blur-[150px] pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
           
-          {/* Section Header */}
-          <div className="max-w-4xl mx-auto text-center mb-16 lg:mb-20">
+          {/* Header */}
+          <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={spring()}
             >
-              <div className="flex items-center justify-center gap-3 mb-5">
-                <div className="w-8 h-px bg-[#0066FF]" />
-                <span className="text-[#0066FF] text-[10px] font-bold tracking-[0.42em] uppercase">
-                  Mentoría Élite Exclusiva
-                </span>
-                <div className="w-8 h-px bg-[#0066FF]" />
-              </div>
-              
-              <h2 className="text-responsive-xl text-white font-black tracking-tight leading-none mb-6">
-                Impacto <span className="gradient-text">1 a 1</span>
+              <h2 className="text-3xl sm:text-4xl font-black text-white">
+                ¿Qué plan es <span className="gradient-text">para vos?</span>
               </h2>
-
-              <p className="text-white/60 text-lg lg:text-xl font-light leading-relaxed max-w-[52ch] mx-auto">
-                No es un plan de entrenamiento genérico. Es una mentoría premium de élite 
-                donde Nahuel trabaja <span className="text-white font-semibold">directamente con vos</span> para reconstruir tu físico, hábitos y mindset.
+              <p className="text-white/45 text-sm sm:text-base font-light mt-2 max-w-lg mx-auto">
+                Evaluá tu situación y elegí el camino óptimo para tu momento y objetivo.
               </p>
             </motion.div>
           </div>
 
-          {/* VSL VIDEO SALES LETTER (REPRODUCTOR INTERACTIVO ULTRA-PREMIUM) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: 30 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={spring(0.1)}
-            className="max-w-4xl mx-auto mb-20 lg:mb-24"
-          >
-            <div
-              className="group relative aspect-video rounded-3xl overflow-hidden cursor-pointer"
-              style={{
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 25px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05)",
-                background: "rgba(10, 10, 15, 0.8)",
-              }}
-              onClick={togglePlay}
-            >
-              {/* HTML5 Video Element */}
-              <video
-                ref={videoRef}
-                src="https://assets.mixkit.co/videos/preview/mixkit-athlete-training-in-the-gym-34079-large.mp4"
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-                style={{ opacity: isPlaying ? 1 : 0.4 }}
-              />
-
-              {/* Cover Overlay Thumbnail (Visible when not playing) */}
-              {!isPlaying && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-20">
-                  
-                  {/* Glowing Pulsing Play Button */}
-                  <motion.div
-                    animate={{ scale: [1, 1.06, 1] }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                    className="w-20 h-20 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 glow-blue text-white mb-6 hover:bg-[#0066FF] hover:border-[#00CCFF]/50 transition-colors duration-300"
-                  >
-                    <Play size={32} className="text-white fill-white translate-x-0.5" />
-                  </motion.div>
-
-                  <div className="px-4 py-1.5 rounded-full bg-black/60 border border-white/10 text-white/50 text-[10px] font-bold tracking-[0.3em] uppercase mb-3">
-                    Video de Presentación
-                  </div>
-                  
-                  <h3 className="text-white font-black text-xl lg:text-3xl tracking-tight max-w-[28ch] leading-snug">
-                    Descubrí el método exacto detrás de las transformaciones
-                  </h3>
-                  
-                  <p className="text-white/40 text-xs lg:text-sm font-light mt-2">
-                    Haz clic para reproducir el video explicativo (5 min)
-                  </p>
-
-                </div>
-              )}
-
-              {/* Custom Control Bar overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between gap-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button
-                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white transition-colors border border-white/5"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    togglePlay();
-                  }}
-                >
-                  {isPlaying ? (
-                    <div className="flex gap-1">
-                      <div className="w-1 h-3.5 bg-white rounded-full animate-pulse" />
-                      <div className="w-1 h-3.5 bg-white rounded-full animate-pulse" />
-                    </div>
-                  ) : (
-                    <Play size={14} className="fill-white" />
-                  )}
-                </button>
-
-                {/* Progress bar mock */}
-                <div className="flex-1 h-1 bg-white/25 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-[#0066FF] to-[#00CCFF] transition-all duration-300" 
-                    style={{ width: isPlaying ? "42%" : "0%" }}
-                  />
-                </div>
-
-                <div className="flex items-center gap-3 text-white/50 text-xs">
-                  <span>{isPlaying ? "02:18 / 05:42" : "00:00 / 05:42"}</span>
-                  
-                  {/* Mute button */}
-                  <button 
-                    onClick={toggleMute}
-                    className="w-7 h-7 rounded-md hover:bg-white/5 flex items-center justify-center text-white"
-                  >
-                    {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
-                  </button>
-
-                  {/* Maximize */}
-                  <button 
-                    onClick={handleMaximize}
-                    className="w-7 h-7 rounded-md hover:bg-white/5 flex items-center justify-center text-white"
-                  >
-                    <Maximize2 size={14} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* FINAL PROLIJO Y CON LLAMADO A LA ACCION */}
-          <div className="max-w-2xl mx-auto text-center border-t border-white/5 pt-16 lg:pt-20">
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={spring()}
-              className="flex flex-col gap-6 lg:gap-8 items-center"
-            >
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-400/5 border border-emerald-400/20 text-emerald-400 text-[10px] font-bold tracking-wider uppercase"
+          {/* Comparativa Blocks */}
+          <div className="flex flex-col gap-3 max-w-3xl mx-auto mb-12">
+            {[
+              {
+                case: "Si querés empezar rápido y por tu cuenta:",
+                solution: "Tu opción ideal es una rutina o guía digital (Rutina Express 30 Min, Guía de Alimentación o Pack Inicial). Son de pago único y auto-gestionables.",
+                tagColor: "text-[#00CCFF] border-[#00CCFF]/25 bg-[#00CCFF]/5"
+              },
+              {
+                case: "Si necesitás entrenamiento y hábitos adaptados a vos:",
+                solution: "El plan mensual *Impacto Base* te brindará la estructura, las rutinas con videos y la planificación de alimentación que tu cuerpo necesita con seguimiento de Nahuel.",
+                tagColor: "text-[#0066FF] border-[#0066FF]/25 bg-[#0066FF]/5"
+              },
+              {
+                case: "Si querés seguimiento exhaustivo por 8 semanas:",
+                solution: "*Impacto Vital* es perfecto para ordenar entrenamiento, alimentación y hábitos diario paso a paso con acompañamiento por WhatsApp y sesiones personales.",
+                tagColor: "text-emerald-400 border-emerald-400/25 bg-emerald-400/5"
+              },
+              {
+                case: "Si buscás transformación profunda de tu estilo de vida:",
+                solution: "La *Mentoría Impacto Fitness* es un proceso trimestral de élite para reprogramar tu identidad, forjar disciplina consciente, trabajar las bases mentales y asistir a eventos.",
+                tagColor: "text-[#b685ff] border-[#7B2FFF]/25 bg-[#7B2FFF]/5"
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={spring(idx * 0.05)}
+                className="p-5 rounded-2xl border border-white/5 bg-[#09090f]/40 backdrop-blur-md flex flex-col gap-2.5"
+                style={{
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.02), 0 5px 15px rgba(0,0,0,0.2)"
+                }}
               >
-                <Shield size={12} className="text-emerald-400" />
-                Inscripciones Abiertas — Cupos Limitados por Mes
-              </div>
-
-              <h3 className="text-white font-black text-2xl lg:text-4xl tracking-tight leading-tight max-w-[20ch]">
-                ¿Listo para forjar tu mejor versión física y mental?
-              </h3>
-
-              <p className="text-white/45 text-sm lg:text-base font-light leading-relaxed max-w-[50ch]">
-                Agenda una sesión de evaluación gratuita directamente con Nahuel por WhatsApp. Evaluaremos tus metas, responderemos tus dudas y veremos si aplicas para la mentoría de élite.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
-                <a
-                  href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(
-                    "Hola! Me gustaría agendar una evaluación gratuita para la mentoría de élite."
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-4.5 rounded-2xl text-white font-bold text-base transition-all duration-300 btn-primary shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)]"
-                >
-                  Aplicar a la Mentoría Exclusiva
-                  <ArrowRight
-                    size={18}
-                    className="group-hover:translate-x-1 transition-transform duration-300"
-                  />
-                </a>
-                <a
-                  href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(
-                    "Hola! Tengo una consulta rápida sobre tus servicios de coaching."
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4.5 rounded-2xl text-white/70 hover:text-white font-bold text-base transition-all duration-300"
-                  style={{
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    background: "rgba(255,255,255,0.03)",
-                  }}
-                >
-                  <MessageCircle size={18} className="text-[#00CCFF]" />
-                  Consulta rápida por WhatsApp
-                </a>
-              </div>
-
-              {/* Trust highlights */}
-              <div className="flex flex-wrap justify-center gap-6 mt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">
-                <div className="flex items-center gap-2">
-                  <Clock size={11} className="text-white/20" />
-                  Videollamadas Semanales
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <span className={`inline-flex px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${item.tagColor} self-start sm:self-center`}>
+                    Caso
+                  </span>
+                  <p className="text-white font-extrabold text-sm sm:text-base leading-tight">
+                    {item.case}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Shield size={11} className="text-white/20" />
-                  Garantía de Resultados
-                </div>
-                <div className="flex items-center gap-2">
-                  <Sparkles size={11} className="text-white/20" />
-                  Soporte 24/7 Directo
-                </div>
-              </div>
-            </motion.div>
+                <p className="text-white/60 text-xs sm:text-sm font-light leading-relaxed pl-1 sm:pl-0">
+                  {item.solution}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            <Link
+              href="/rutinas"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-white/55 hover:text-white border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all font-semibold text-sm"
+            >
+              Ver recursos digitales
+            </Link>
+            <a
+              href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(
+                "Hola Nahuel! Me gustaría charlar con vos por WhatsApp para que me asesores sobre qué plan se adapta mejor a mis objetivos."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-white btn-primary transition-all font-bold text-sm"
+            >
+              <MessageCircle size={15} />
+              Hablar por WhatsApp
+            </a>
           </div>
 
         </div>

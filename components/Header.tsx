@@ -18,7 +18,7 @@ import { SiteSettings } from "@/types/admin";
 const navLinks = [
   { label: "Inicio", href: "/" },
   { label: "Sobre mí", href: "/#sobre-mi" },
-  { label: "Rutinas", href: "/rutinas" },
+  { label: "Planes", href: "/rutinas" },
   { label: "Impacto 1 a 1", href: "/impacto-1a1" },
   { label: "FAQ", href: "/faq" },
 ];

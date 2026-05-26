@@ -1,34 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { getSettings } from "@/lib/data-service";
-import { SiteSettings } from "@/types/admin";
+import { Sparkles, CheckCircle2, Award, ShieldCheck } from "lucide-react";
 
-const disciplines = [
-  "Musculación",
-  "Alto Rendimiento",
-  "Coaching Mental",
-  "Artes Marciales",
-  "Entrenamiento Personalizado",
-  "Nutrición Deportiva",
+const details = [
+  "10 años entrenando de forma consciente y disciplinada su propio cuerpo.",
+  "Más de 4 años acompañando personas en su proceso evolutivo.",
+  "Experiencia comprobada en modalidades presencial y digital.",
+  "Integración de entrenamiento, alimentación consciente, hábitos, mentalidad, energía y liderazgo personal.",
 ];
 
 const certifications = [
-  "Entrenador Personal Certificado",
-  "Especialista en Hipertrofia",
-  "Nutrición Deportiva",
-  "Coaching Integral",
-  "Artes Marciales – Cinturón Negro",
-  "Alto Rendimiento Deportivo",
+  "Personal Trainer Internacional & Instructor en Musculación.",
+  "Atleta de Calistenia & Especialista en entrenamiento corporal.",
+  "Certificado en Nutrición Deportiva & Ciencias del alimento.",
+  "Coach Personal especializado en gestión emocional y Programación Neurolingüística (PNL)."
 ];
 
 const stats = [
-  { value: "500+", label: "Atletas", sub: "transformados" },
-  { value: "5+", label: "Años", sub: "de experiencia" },
-  { value: "6", label: "Disciplinas", sub: "dominadas" },
-  { value: "98%", label: "Satisfacción", sub: "de clientes" },
+  { value: "10 Años", label: "de disciplina propia", sub: "entrenamiento constante" },
+  { value: "4+ Años", label: "coacheando atletas", sub: "metodología probada" },
+  { value: "100%", label: "integral y digital", sub: "sostenible en el tiempo" },
+  { value: "500+", label: "vidas transformadas", sub: "enfoque de identidad" },
 ];
 
 const galleryImages = [
@@ -38,13 +33,13 @@ const galleryImages = [
     url: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
   },
   {
-    category: "Combate",
-    title: "Disciplina y Control",
+    category: "Calistenia",
+    title: "Dominio Corporal",
     url: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80",
   },
   {
     category: "Mindset",
-    title: "Alto Rendimiento",
+    title: "Liderazgo Personal",
     url: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
   },
 ];
@@ -62,34 +57,13 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const [settings, setSettings] = useState<SiteSettings | null>(null);
-
-  useEffect(() => {
-    async function loadAboutSettings() {
-      try {
-        const loaded = await getSettings();
-        setSettings(loaded);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    loadAboutSettings();
-  }, []);
-
-  const bioImage = settings?.aboutImage || "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80";
-  const bioTitle = settings?.aboutTitle || "No soy solo un entrenador.";
-  const bioText = settings?.aboutBio || "Soy Nahuel, especialista en musculación, coaching integral y artes marciales. Mi metodología combina ciencia del ejercicio, nutrición precisa y mentalidad de alto rendimiento para crear transformaciones reales y sostenibles.";
-
-  const titleWords = bioTitle.split(" ");
-  const lastWord = titleWords.pop() || "";
-  const initialText = titleWords.join(" ");
+  const bioImage = "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80";
 
   return (
     <section
       id="sobre-mi"
       ref={sectionRef}
-      className="relative pt-28 pb-44 lg:pt-36 lg:pb-56 overflow-hidden"
-      style={{ background: "#050509" }}
+      className="relative pt-28 pb-44 lg:pt-36 lg:pb-56 overflow-hidden bg-[#050509]"
     >
       {/* Top hairline */}
       <div
@@ -102,11 +76,11 @@ export default function AboutSection() {
 
       {/* Ghost background number for depth */}
       <div
-        className="absolute -top-4 right-0 font-black leading-none tracking-tighter select-none pointer-events-none text-white/[0.018]"
+        className="absolute -top-4 right-0 font-black leading-none tracking-tighter select-none pointer-events-none text-white/[0.012]"
         style={{ fontSize: "clamp(10rem, 32vw, 30rem)" }}
         aria-hidden="true"
       >
-        500
+        IMPACTO
       </div>
 
       {/* Ambient glow */}
@@ -114,14 +88,14 @@ export default function AboutSection() {
         className="absolute top-1/2 right-0 w-[700px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(0,102,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(0,102,255,0.03) 0%, transparent 70%)",
           filter: "blur(120px)",
         }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* Section header — left-aligned, no center */}
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -132,29 +106,20 @@ export default function AboutSection() {
           <div className="flex items-center gap-3 mb-5">
             <div className="w-10 h-px bg-[#0066FF]" />
             <span className="text-[#0066FF] text-[10px] font-bold tracking-[0.42em] uppercase">
-              Sobre mí
+              Conocé al Coach
             </span>
           </div>
           <h2
-            className="font-black tracking-tighter leading-[0.9] text-white max-w-3xl"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 6rem)" }}
+            className="font-black tracking-tighter leading-[0.95] text-white max-w-4xl"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)" }}
           >
-            {initialText}{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #0066FF 20%, #00CCFF 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {lastWord}
-            </span>
+            Mi nombre es Nahuel y soy coach de<br />
+            <span className="gradient-text">transformación física e integral.</span>
           </h2>
         </motion.div>
 
-        {/* Main grid: asymmetric — image narrower, content wider */}
-        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 mb-28 lg:mb-40 main-grid">
+        {/* Main grid: asymmetric */}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 mb-28 lg:mb-40 main-grid">
 
           {/* Left: Portrait image */}
           <motion.div
@@ -166,7 +131,7 @@ export default function AboutSection() {
           >
             <div
               className="relative rounded-3xl overflow-hidden mx-auto lg:mx-0"
-              style={{ maxWidth: "300px", aspectRatio: "3/4" }}
+              style={{ maxWidth: "340px", aspectRatio: "3/4" }}
             >
               <div
                 className="absolute inset-0 bg-cover bg-center bg-top"
@@ -174,7 +139,7 @@ export default function AboutSection() {
                   backgroundImage: `url('${bioImage}')`,
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050509]/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050509]/75 via-transparent to-transparent" />
               {/* Liquid glass border */}
               <div
                 className="absolute inset-0 rounded-3xl"
@@ -192,35 +157,40 @@ export default function AboutSection() {
               viewport={{ once: true }}
               transition={spring(0.4)}
               className="glass-premium absolute -right-4 lg:-right-6 top-16"
-              style={{ padding: "14px 18px", minWidth: "148px" }}
+              style={{ padding: "14px 18px", minWidth: "160px" }}
             >
               <div
                 className="font-black tracking-tighter leading-none text-white mb-1"
                 style={{ fontSize: "2.2rem" }}
               >
-                5+
+                10+
               </div>
               <div className="text-[#00CCFF] text-xs font-semibold tracking-wide">
-                años
+                Años
               </div>
-              <div className="text-white/35 text-xs">transformando vidas</div>
+              <div className="text-white/45 text-[10px]">Entrenando su cuerpo</div>
             </motion.div>
           </motion.div>
 
           {/* Right: Editorial content */}
           <div className="flex flex-col gap-8 lg:gap-10 justify-center">
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={spring(0.15)}
-              className="text-white/55 text-xl leading-relaxed font-light max-w-[50ch]"
+              className="flex flex-col gap-5 text-white/70 text-base sm:text-lg leading-relaxed font-light max-w-[55ch]"
             >
-              {bioText}
-            </motion.p>
+              <p>
+                Durante toda mi carrera he creído firmemente que el fitness genérico y aburrido está roto. La transformación física no se trata simplemente de levantar pesas, sino de construir un sistema de hábitos atómicos que proteja tu mente, eleve tu energía y te devuelva la autoconfianza inquebrantable.
+              </p>
+              <p>
+                A través de **Impacto Fitness**, he desarrollado un método unificado donde no solo te entrego una rutina, sino una estructura física, mental y alimenticia que se adapta 100% a tu estilo de vida para que puedas sostener tu cambio en el tiempo.
+              </p>
+            </motion.div>
 
-            {/* Disciplines */}
+            {/* Path description */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -228,24 +198,18 @@ export default function AboutSection() {
               transition={spring(0.25)}
             >
               <p className="text-white/25 text-[10px] font-bold tracking-[0.38em] uppercase mb-4">
-                Disciplinas
+                Mi Trayectoria Pointers
               </p>
-              <div className="flex flex-wrap gap-2">
-                {disciplines.map((d, i) => (
-                  <motion.span
-                    key={d}
-                    initial={{ opacity: 0, scale: 0.92 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.25 + i * 0.05 }}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium text-white/55 hover:text-white/90 transition-colors duration-300 cursor-default"
-                    style={{
-                      background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.07)",
-                    }}
-                  >
-                    {d}
-                  </motion.span>
+              <div className="flex flex-col gap-3">
+                {details.map((d, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <div className="mt-1 flex-shrink-0">
+                      <CheckCircle2 size={13} className="text-[#00CCFF]" />
+                    </div>
+                    <span className="text-white/60 text-xs sm:text-sm font-light leading-relaxed">
+                      {d}
+                    </span>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -258,9 +222,9 @@ export default function AboutSection() {
               transition={spring(0.35)}
             >
               <p className="text-white/25 text-[10px] font-bold tracking-[0.38em] uppercase mb-4">
-                Certificaciones
+                Formación & Certificaciones
               </p>
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-3">
                 {certifications.map((cert, i) => (
                   <motion.div
                     key={cert}
@@ -268,10 +232,12 @@ export default function AboutSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.35 + i * 0.06 }}
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-3"
                   >
-                    <div className="w-1 h-1 rounded-full bg-[#0066FF] flex-shrink-0" />
-                    <span className="text-white/55 text-sm">{cert}</span>
+                    <div className="mt-1 flex-shrink-0">
+                      <Award size={14} className="text-[#7B2FFF]" />
+                    </div>
+                    <span className="text-white/60 text-xs sm:text-sm font-light">{cert}</span>
                   </motion.div>
                 ))}
               </div>
@@ -280,7 +246,7 @@ export default function AboutSection() {
         </div>
 
         {/* Editorial Triple Image Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-20 lg:mb-28 about-gallery">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-24 lg:mb-32 about-gallery">
           {galleryImages.map((img, i) => (
             <motion.div
               key={img.title}
@@ -289,17 +255,13 @@ export default function AboutSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={spring(i * 0.08)}
               whileHover={{ scale: 1.015 }}
-              className="group relative h-64 lg:h-80 overflow-hidden rounded-3xl cursor-default"
-              style={{
-                border: "1px solid rgba(255,255,255,0.06)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
-              }}
+              className="group relative h-64 lg:h-80 overflow-hidden rounded-3xl cursor-default border border-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: `url('${img.url}')` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050509]/90 via-[#050509]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050509]/95 via-[#050509]/30 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0066FF]/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <span className="text-[#00CCFF] text-[10px] font-bold tracking-[0.38em] uppercase block mb-1">
@@ -313,7 +275,27 @@ export default function AboutSection() {
           ))}
         </div>
 
-        {/* Stats: editorial large numbers — no boxes, just type + thin divider */}
+        {/* Editorial Trust Quote Quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={spring(0.1)}
+          className="p-8 sm:p-12 rounded-3xl border border-white/5 bg-[#09090f]/50 backdrop-blur-xl relative overflow-hidden text-center max-w-4xl mx-auto mb-20 lg:mb-28"
+          style={{
+            boxShadow: "0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03)"
+          }}
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] bg-gradient-to-r from-transparent via-[#0066FF] to-transparent" />
+          <h3 className="text-white font-black text-xl sm:text-2xl lg:text-3xl leading-snug tracking-tight mb-4 italic max-w-3xl mx-auto">
+            “Porque transformar el cuerpo no se trata solo de estética.<br />Se trata de volver a confiar en vos.”
+          </h3>
+          <span className="text-white/25 text-[9px] font-bold tracking-[0.4em] uppercase block">
+            — Nahuel Coach — Impacto Fitness
+          </span>
+        </motion.div>
+
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

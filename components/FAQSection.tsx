@@ -6,44 +6,40 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    q: "¿Cómo funcionan los programas?",
-    a: "Al comprar un programa recibirás por WhatsApp un PDF completo con tus rutinas semanales, videos de técnica, guía nutricional y todo el material incluido. Podés acceder desde cualquier dispositivo.",
+    q: "¿Sirve si tengo poco tiempo?",
+    a: "Totalmente. El método está diseñado específicamente para personas ocupadas. La Rutina Express de 30 minutos te permite entrenar con alta eficiencia en cualquier momento del día, y los planes personalizados se adaptan a tu agenda real, no al revés.",
   },
   {
-    q: "¿Cómo recibo mi programa después de comprarlo?",
-    a: "Una vez confirmado el pago por WhatsApp, recibirás todo el material digital en 24-48 horas hábiles directamente en tu WhatsApp o email. El proceso es rápido y personalizado.",
+    q: "¿Necesito experiencia entrenando?",
+    a: "No, para nada. Contamos con recursos diseñados paso a paso desde cero como el Pack Impacto Inicial, donde aprenderás la técnica correcta, y planes de asesoría 1 a 1 donde Nahuel corregirá cada uno de tus ejercicios por video para evitar lesiones.",
   },
   {
-    q: "¿Cómo se realiza el pago?",
-    a: "Los pagos se coordinan por WhatsApp. Aceptamos transferencia bancaria, Mercado Pago, PayPal y tarjetas de crédito/débito. Una vez confirmado el pago enviamos tu programa.",
+    q: "¿Tengo que hacer una dieta estricta?",
+    a: "No. En Impacto Fitness creemos en la alimentación consciente y flexible. Te enseñamos a organizar tus platos basándote en alimentos nutritivos y a calcular porciones, pero sin prohibiciones extremas ni obsesiones para que puedas sostener el plan socialmente.",
   },
   {
-    q: "¿Hay seguimiento incluido en los programas?",
-    a: "Los programas base incluyen soporte por WhatsApp. El Impacto 1 a 1 incluye seguimiento semanal personalizado, videollamadas con Nahuel y ajustes en tiempo real del plan.",
+    q: "¿Puedo comprar solo una rutina?",
+    a: "Sí, claro. Podés empezar con un recurso digital e independiente como la Rutina Express 30 Min o el Recetario Impacto Fitness sin necesidad de contratar una asesoría mensual. Son de un solo pago y acceso de por vida.",
   },
   {
-    q: "¿Los programas son aptos para principiantes?",
-    a: "Sí, contamos con programas para todos los niveles. El Plan Inicial y Full Body Power son perfectos para comenzar. Cada programa indica claramente el nivel recomendado.",
+    q: "¿Cuál es la diferencia entre una rutina y la mentoría?",
+    a: "Una rutina digital es un PDF estático auto-gestionable. La mentoría y asesoría personalizada (como Impacto Base o Vital) incluye seguimiento humano real, videollamadas con Nahuel, ajustes de cargas, retroalimentación técnica y un plan nutricional adaptado a tus métricas semanales.",
   },
   {
-    q: "¿Puedo hacer los entrenamientos en casa?",
-    a: "Varios programas incluyen versión para casa con o sin equipamiento. Te recomendamos especificarlo al momento de comprar para que el material sea adaptado a tu situación.",
+    q: "¿La mentoría es online?",
+    a: "Sí, es 100% online y a distancia. Trabajamos mediante WhatsApp para correcciones técnicas rápidas de tus videos, videollamadas para check-ins semanales y una plataforma digital para tu rutina. Esto te permite entrenar a tus propios horarios desde cualquier parte del mundo.",
   },
   {
-    q: "¿Qué diferencia al Impacto 1 a 1 de un programa?",
-    a: "El Impacto 1 a 1 es mentoría personalizada directamente con Nahuel. Todo está diseñado 100% para vos, con videollamadas semanales, ajustes en tiempo real y soporte ilimitado.",
-  },
-  {
-    q: "¿Cuánto tiempo lleva ver resultados?",
-    a: "Los primeros cambios visibles aparecen entre las semanas 3-4. Resultados significativos entre los meses 2-3. Los resultados dependen de la constancia y adherencia al programa.",
-  },
+    q: "¿Qué pasa si ya intenté muchas veces y abandoné?",
+    a: "La mayoría de las personas abandona porque dependen únicamente de la motivación. En Impacto Fitness te damos estructura, disciplina y un sistema de hábitos atómicos. Nos enfocamos en reprogramar tu identidad física para que el entrenamiento sea parte de quién sos, no una carga obligatoria.",
+  }
 ];
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-32 lg:py-44 overflow-hidden">
+    <section id="faq" className="relative py-28 lg:py-40 overflow-hidden">
       <div className="absolute inset-0 bg-[#050508]" />
       <div className="absolute top-0 left-0 right-0 h-px line-thin" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#0066FF]/4 blur-[150px] pointer-events-none" />
@@ -61,8 +57,7 @@ export default function FAQSection() {
             Preguntas Frecuentes
           </p>
           <h2 className="text-responsive-xl text-white leading-tight">
-            Todo lo que{" "}
-            <span className="gradient-text">necesitás saber</span>
+            Todo lo que <span className="gradient-text">necesitás saber</span>
           </h2>
         </motion.div>
 
@@ -119,7 +114,7 @@ export default function FAQSection() {
                     >
                       <div className="px-5 sm:px-6 pb-5 sm:pb-6">
                         <div className="h-px line-thin mb-4" />
-                        <p className="text-white/60 text-sm leading-relaxed">{faq.a}</p>
+                        <p className="text-white/65 text-sm leading-relaxed font-light">{faq.a}</p>
                       </div>
                     </motion.div>
                   )}
