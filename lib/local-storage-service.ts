@@ -8,8 +8,13 @@ import {
 } from "./seed-data";
 import { Routine, Plan, Banner, FAQ, SiteSettings, HomeSectionConfig } from "@/types/admin";
 
+// Data version — bump this string whenever seed data is updated
+// so old cached localStorage is automatically cleared and re-seeded.
+const DATA_VERSION = "v3-ars-prices-2026";
+
 // Keys used in localStorage
 const KEYS = {
+  VERSION: "nahue_coach_data_version",
   ROUTINES: "nahue_coach_routines",
   PLANS: "nahue_coach_plans",
   BANNERS: "nahue_coach_banners",
@@ -43,9 +48,23 @@ function setSafeItem<T>(key: string, value: T): void {
   }
 }
 
-// Initialize LocalStorage with seed data if keys don't exist
+// Initialize LocalStorage with seed data.
+// If the stored version doesn't match DATA_VERSION, wipe everything and re-seed.
 export function initializeLocalStorage(): void {
   if (!isClient) return;
+
+  const storedVersion = window.localStorage.getItem(KEYS.VERSION);
+
+  if (storedVersion !== DATA_VERSION) {
+    // Version mismatch or first visit — clear all stale data and re-seed
+    window.localStorage.removeItem(KEYS.ROUTINES);
+    window.localStorage.removeItem(KEYS.PLANS);
+    window.localStorage.removeItem(KEYS.BANNERS);
+    window.localStorage.removeItem(KEYS.SECTIONS);
+    window.localStorage.removeItem(KEYS.FAQS);
+    window.localStorage.removeItem(KEYS.SETTINGS);
+    window.localStorage.setItem(KEYS.VERSION, DATA_VERSION);
+  }
 
   if (!window.localStorage.getItem(KEYS.ROUTINES)) {
     setSafeItem(KEYS.ROUTINES, seedRoutines);

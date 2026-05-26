@@ -135,14 +135,26 @@ export default function Hero() {
     <section className="relative min-h-[100dvh] overflow-hidden bg-[#050509]">
       {/* Full-bleed background image */}
       <motion.div style={{ scale: bgScale }} className="absolute inset-0">
+        {/* Mobile: show the person (right side of image) */}
         <div
-          className="absolute inset-0 bg-cover transition-all duration-1000"
+          className="absolute inset-0 bg-cover transition-all duration-1000 sm:hidden"
+          style={{
+            backgroundImage: `url('${bgImg}')`,
+            backgroundPosition: "70% center",
+          }}
+        />
+        {/* Desktop: standard position */}
+        <div
+          className="absolute inset-0 bg-cover transition-all duration-1000 hidden sm:block"
           style={{
             backgroundImage: `url('${bgImg}')`,
             backgroundPosition: "83% center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050509]/98 via-[#050509]/80 to-[#050509]/25" style={{ opacity: 0.8 }} />
+        {/* Mobile overlay: lighter on right so person shows */}
+        <div className="absolute inset-0 sm:hidden bg-gradient-to-r from-[#050509]/95 via-[#050509]/60 to-[#050509]/15" />
+        {/* Desktop overlay */}
+        <div className="absolute inset-0 hidden sm:block bg-gradient-to-r from-[#050509]/98 via-[#050509]/80 to-[#050509]/25" style={{ opacity: 0.8 }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050509] via-transparent to-[#050509]/55" />
       </motion.div>
 
