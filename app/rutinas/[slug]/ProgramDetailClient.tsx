@@ -70,7 +70,7 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
   ];
 
   const whatsappMsg = encodeURIComponent(
-    `Hola Nahuel! 👋\n\nQuiero comprar el programa: *${program.name}*\n\n💰 Precio: $${program.price} USD\n\nMi nombre:\nMi objetivo:`
+    `Hola Nahuel! 👋\n\nQuiero comprar el programa: *${program.name}*\n\n💰 Precio: $${program.price.toLocaleString("es-AR")} ARS\n\nMi nombre:\nMi objetivo:`
   );
 
   return (
@@ -138,9 +138,9 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {program.originalPrice && (
-              <span className="text-white/30 text-sm line-through">${program.originalPrice}</span>
+              <span className="text-white/30 text-sm line-through">${program.originalPrice.toLocaleString("es-AR")}</span>
             )}
-            <span className="text-2xl font-black gradient-text-blue">${program.price} USD</span>
+            <span className="text-2xl font-black gradient-text-blue">${program.price.toLocaleString("es-AR")} ARS</span>
           </div>
           <div className="flex gap-2">
             <a
@@ -309,10 +309,10 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
           >
             <div className="text-center">
               {program.originalPrice && (
-                <div className="text-white/30 text-sm line-through mb-1">${program.originalPrice} USD</div>
+                <div className="text-white/30 text-sm line-through mb-1">${program.originalPrice.toLocaleString("es-AR")} ARS</div>
               )}
-              <div className="text-4xl font-black gradient-text-blue mb-1">${program.price}</div>
-              <div className="text-white/40 text-sm">USD — Pago único</div>
+              <div className="text-4xl font-black gradient-text-blue mb-1">${program.price.toLocaleString("es-AR")}</div>
+              <div className="text-white/40 text-sm">ARS — Pago único</div>
             </div>
 
             <div className="h-px line-thin" />
@@ -376,7 +376,7 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl btn-primary text-white font-bold"
             >
               <ShoppingCart size={18} />
-              Agregar al carrito — ${program.price}
+              Agregar al carrito — ${program.price.toLocaleString("es-AR")} ARS
             </button>
             <a
               href={`https://wa.me/5491100000000?text=${whatsappMsg}`}

@@ -251,11 +251,11 @@ export default function RutinasPage() {
                       <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between gap-4">
                         <div className="flex flex-col">
                           {program.originalPrice && (
-                            <span className="text-[10px] text-white/30 line-through leading-none mb-0.5">${program.originalPrice} USD</span>
+                            <span className="text-[10px] text-white/30 line-through leading-none mb-0.5">${program.originalPrice.toLocaleString("es-AR")} ARS</span>
                           )}
                           <div className="flex items-baseline gap-0.5">
-                            <span className="text-xl font-black text-white leading-none">${program.price}</span>
-                            <span className="text-[10px] text-white/40 font-bold tracking-wider ml-0.5">USD</span>
+                            <span className="text-xl font-black text-white leading-none">${program.price.toLocaleString("es-AR")}</span>
+                            <span className="text-[10px] text-white/40 font-bold tracking-wider ml-0.5">ARS</span>
                           </div>
                         </div>
 
