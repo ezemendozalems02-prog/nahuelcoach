@@ -10,7 +10,7 @@ export default function TransitionPhrase() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35 filter grayscale contrast-125"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=1600&q=80')",
+            backgroundImage: "url('/beach_flex.jpg')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#030307] via-transparent to-[#030307]" />

@@ -38,7 +38,7 @@ export default function FinalCTA() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25 filter grayscale contrast-125 brightness-50"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1600&q=80')",
+            backgroundImage: "url('/mountain_flex.jpg')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#030307] via-transparent to-[#030307]" />

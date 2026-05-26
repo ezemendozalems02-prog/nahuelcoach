@@ -129,7 +129,7 @@ export default function Hero() {
     loadHeroConfig();
   }, []);
 
-  const bgImg = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1600&q=85";
+  const bgImg = "/mountain_flex.jpg";
 
   return (
     <section className="relative min-h-[100dvh] overflow-hidden bg-[#050509]">

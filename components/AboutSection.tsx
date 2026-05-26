@@ -30,17 +30,17 @@ const galleryImages = [
   {
     category: "Fuerza",
     title: "Entrenamiento de Poder",
-    url: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+    url: "/beach_flex.jpg",
   },
   {
     category: "Calistenia",
     title: "Dominio Corporal",
-    url: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80",
+    url: "/handstand.png",
   },
   {
     category: "Mindset",
     title: "Liderazgo Personal",
-    url: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
+    url: "/ice_bath.jpg",
   },
 ];
 
@@ -57,7 +57,7 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const bioImage = "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80";
+  const bioImage = "/conference.jpg";
 
   return (
     <section
