@@ -6,7 +6,6 @@ import { useInView } from "framer-motion";
 import { Sparkles, CheckCircle2, Award, ShieldCheck } from "lucide-react";
 
 const details = [
-  "10 años entrenando de forma consciente y disciplinada su propio cuerpo.",
   "Más de 4 años acompañando personas en su proceso evolutivo.",
   "Experiencia comprobada en modalidades presencial y digital.",
   "Integración de entrenamiento, alimentación consciente, hábitos, mentalidad, energía y liderazgo personal.",
@@ -110,11 +109,10 @@ export default function AboutSection() {
             </span>
           </div>
           <h2
-            className="font-black tracking-tighter leading-[0.95] text-white max-w-4xl"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)" }}
+            className="font-semibold tracking-tight leading-snug text-white max-w-4xl"
+            style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)" }}
           >
-            Mi nombre es Nahuel y soy coach de<br />
-            <span className="gradient-text">transformación física e integral.</span>
+            Mi nombre es Nahuel y soy coach de <span className="gradient-text">transformación física e integral.</span>
           </h2>
         </motion.div>
 
@@ -183,10 +181,22 @@ export default function AboutSection() {
               className="flex flex-col gap-5 text-white/70 text-base sm:text-lg leading-relaxed font-light max-w-[55ch]"
             >
               <p>
-                Durante toda mi carrera he creído firmemente que el fitness genérico y aburrido está roto. La transformación física no se trata simplemente de levantar pesas, sino de construir un sistema de hábitos atómicos que proteja tu mente, eleve tu energía y te devuelva la autoconfianza inquebrantable.
+                Llevo 10 años entrenando mi cuerpo y hace más de 4 años me dedico a acompañar personas en procesos de cambio real en sala de musculación presencial y de forma digital integrando entrenamiento, alimentación consciente, hábitos, mentalidad, energía y liderazgo personal.
               </p>
               <p>
-                A través de **Impacto Fitness**, he desarrollado un método unificado donde no solo te entrego una rutina, sino una estructura física, mental y alimenticia que se adapta 100% a tu estilo de vida para que puedas sostener tu cambio en el tiempo.
+                Mi formación combina diferentes herramientas que potencian el cambio. Soy Personal Trainer, Instructor en Musculación, Atleta de calistenia, con Formación en alimentación deportiva y ciencias del alimento, Coaching personal, Gestión emocional y PNL.
+              </p>
+              <p>
+                Mi recorrido nace desde mi propia transformación. Antes de crear un método, tuve que atravesar mi propio camino: ordenar mi cuerpo, fortalecer mi mente, elevar mi energía y construir una identidad más disciplinada, presente y coherente.
+              </p>
+              <p>
+                Esa experiencia personal, sumada a años de formación, práctica y acompañamiento a otras personas, me llevó a desarrollar Impacto Fitness: un método integral para quienes quieren transformar su cuerpo, pero también recuperar dirección, confianza y poder personal.
+              </p>
+              <p>
+                A lo largo de mi camino facilité procesos individuales, entrenamientos personalizados, experiencias grupales, eventos transformacionales, dinámicas de alto impacto, podcasts y espacios de desarrollo personal donde el cuerpo se convierte en una puerta de entrada hacia una vida más ordenada, fuerte y consciente.
+              </p>
+              <p>
+                Mi enfoque no es solo darte una rutina. Mi enfoque es ayudarte a construir una estructura física, mental y emocional que puedas sostener. Porque transformar el cuerpo no se trata solo de estética. Se trata de volver a confiar en vos, recuperar energía y convertirte en una persona capaz de cumplir lo que se propone.
               </p>
             </motion.div>
 

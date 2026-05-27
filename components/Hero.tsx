@@ -106,8 +106,8 @@ function MarqueeStrip() {
 
 const stats = [
   { value: "10 Años", label: "entrenando su cuerpo" },
-  { value: "4+ Años", label: "coacheando personas" },
-  { value: "98%", label: "tasa de éxito integral" },
+  { value: "+200", label: "casos de éxito" },
+  { value: "Speaker", label: "& formador de alto impacto" },
 ];
 
 export default function Hero() {
@@ -211,16 +211,6 @@ export default function Hero() {
                 <span className="text-white">Volvé a confiar en vos.</span>
               </motion.h1>
             </div>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.45 }}
-              className="text-white/70 text-base sm:text-lg leading-relaxed mb-6 font-light max-w-3xl"
-            >
-              Impacto Fitness es un método de transformación integral para personas con poco tiempo que quieren dejar de improvisar, ordenar sus hábitos y construir un cuerpo más fuerte, liviano y funcional.
-            </motion.p>
 
             {/* Authority Text */}
             <motion.p
