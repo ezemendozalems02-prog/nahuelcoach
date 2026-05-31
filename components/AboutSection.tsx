@@ -62,7 +62,7 @@ export default function AboutSection() {
     <section
       id="sobre-mi"
       ref={sectionRef}
-      className="relative pt-28 pb-44 lg:pt-36 lg:pb-56 overflow-hidden bg-[#050509]"
+      className="relative pt-28 pb-44 lg:pt-36 lg:pb-56 overflow-hidden bg-[#16161e]"
     >
       {/* Top hairline */}
       <div
@@ -112,7 +112,7 @@ export default function AboutSection() {
             className="font-semibold tracking-tight leading-snug text-white max-w-4xl"
             style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)" }}
           >
-            Mi nombre es Nahuel y soy coach de <span className="gradient-text">transformación física e integral.</span>
+            Soy Nahuel, coach de <span className="gradient-text">transformación física e integral.</span>
           </h2>
         </motion.div>
 
@@ -178,25 +178,19 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={spring(0.15)}
-              className="flex flex-col gap-5 text-white/70 text-base sm:text-lg leading-relaxed font-light max-w-[55ch]"
+              className="flex flex-col gap-5 text-white/65 text-sm sm:text-base leading-relaxed font-light max-w-[55ch]"
             >
               <p>
-                Llevo 10 años entrenando mi cuerpo y hace más de 4 años me dedico a acompañar personas en procesos de cambio real en sala de musculación presencial y de forma digital integrando entrenamiento, alimentación consciente, hábitos, mentalidad, energía y liderazgo personal.
+                Hace más de 4 años acompaño procesos de cambio real en sala de musculación y de forma digital, integrando entrenamiento, alimentación consciente, hábitos, mentalidad, energía y liderazgo personal.
               </p>
               <p>
-                Mi formación combina diferentes herramientas que potencian el cambio. Soy Personal Trainer, Instructor en Musculación, Atleta de calistenia, con Formación en alimentación deportiva y ciencias del alimento, Coaching personal, Gestión emocional y PNL.
+                Soy <strong className="text-white font-semibold">Personal Trainer</strong>, <strong className="text-white font-semibold">Instructor en Musculación</strong>, atleta de calistenia, con formación en <strong className="text-white font-semibold">alimentación deportiva</strong>, ciencias del alimento, <strong className="text-white font-semibold">coaching personal</strong>, <strong className="text-white font-semibold">gestión emocional</strong> y <strong className="text-white font-semibold">PNL</strong>.
               </p>
               <p>
-                Mi recorrido nace desde mi propia transformación. Antes de crear un método, tuve que atravesar mi propio camino: ordenar mi cuerpo, fortalecer mi mente, elevar mi energía y construir una identidad más disciplinada, presente y coherente.
+                <span className="text-[#00CCFF] font-semibold">Impacto Fitness</span> nace de mi propia transformación y de años de práctica acompañando a otras personas. Es un método integral para quienes no solo quieren mejorar su físico, sino también recuperar dirección, confianza y poder personal.
               </p>
-              <p>
-                Esa experiencia personal, sumada a años de formación, práctica y acompañamiento a otras personas, me llevó a desarrollar Impacto Fitness: un método integral para quienes quieren transformar su cuerpo, pero también recuperar dirección, confianza y poder personal.
-              </p>
-              <p>
-                A lo largo de mi camino facilité procesos individuales, entrenamientos personalizados, experiencias grupales, eventos transformacionales, dinámicas de alto impacto, podcasts y espacios de desarrollo personal donde el cuerpo se convierte en una puerta de entrada hacia una vida más ordenada, fuerte y consciente.
-              </p>
-              <p>
-                Mi enfoque no es solo darte una rutina. Mi enfoque es ayudarte a construir una estructura física, mental y emocional que puedas sostener. Porque transformar el cuerpo no se trata solo de estética. Se trata de volver a confiar en vos, recuperar energía y convertirte en una persona capaz de cumplir lo que se propone.
+              <p className="border-l-2 border-[#0066FF]/60 pl-4 text-white/50 italic">
+                Mi enfoque no es darte una rutina más. Es ayudarte a construir una estructura física, mental y emocional que puedas sostener.
               </p>
             </motion.div>
 

@@ -107,7 +107,7 @@ function MarqueeStrip() {
 const stats = [
   { value: "10 Años", label: "entrenando su cuerpo" },
   { value: "+200", label: "casos de éxito" },
-  { value: "Speaker", label: "& formador de alto impacto" },
+  { value: "+10 eventos", label: "Formador y speaker" },
 ];
 
 export default function Hero() {
@@ -132,7 +132,7 @@ export default function Hero() {
   const bgImg = "/hero_banner.png";
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden bg-[#050509]">
+    <section className="relative min-h-[100dvh] overflow-hidden bg-[#16161e]">
       {/* Full-bleed background image */}
       <motion.div style={{ scale: bgScale }} className="absolute inset-0">
         {/* Mobile: show the person (right side of image) */}
@@ -151,11 +151,11 @@ export default function Hero() {
             backgroundPosition: "83% center",
           }}
         />
-        {/* Mobile overlay: lighter on right so person shows */}
-        <div className="absolute inset-0 sm:hidden bg-gradient-to-r from-[#050509]/95 via-[#050509]/60 to-[#050509]/15" />
+        {/* Mobile overlay */}
+        <div className="absolute inset-0 sm:hidden bg-gradient-to-r from-[#16161e]/95 via-[#16161e]/60 to-[#16161e]/15" />
         {/* Desktop overlay */}
-        <div className="absolute inset-0 hidden sm:block bg-gradient-to-r from-[#050509]/98 via-[#050509]/80 to-[#050509]/25" style={{ opacity: 0.8 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050509] via-transparent to-[#050509]/55" />
+        <div className="absolute inset-0 hidden sm:block bg-gradient-to-r from-[#16161e]/98 via-[#16161e]/80 to-[#16161e]/25" style={{ opacity: 0.8 }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#16161e] via-transparent to-[#16161e]/55" />
       </motion.div>
 
       <ParticleCanvas />
@@ -204,7 +204,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 70, damping: 18, delay: 0.2 }}
                 className="font-black tracking-tighter leading-[0.95] text-white"
-                style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)" }}
+                style={{ fontSize: "clamp(2rem, 5.5vw, 4.5rem)" }}
               >
                 Transformá tu cuerpo.<br />
                 <span className="gradient-text">Recuperá tu energía.</span><br />
@@ -257,7 +257,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.75 }}
-              className="text-white/25 text-xs font-semibold mb-12 tracking-wide"
+              className="text-white/55 text-sm sm:text-base font-medium mb-12 tracking-wide"
             >
               ⚡ Elegí cómo querés empezar: con una rutina, un recurso digital o un proceso personalizado.
             </motion.p>
