@@ -71,7 +71,7 @@ export default function Header() {
             <img
               src="/logo.png"
               alt="Nahuel Fitness Coach"
-              className="h-12 w-auto rounded-xl"
+              className="h-14 w-auto"
             />
           </Link>
 

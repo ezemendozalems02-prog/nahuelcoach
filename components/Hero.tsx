@@ -266,7 +266,7 @@ export default function Hero() {
               {[
                 { value: "10 Años", label: "entrenando su cuerpo" },
                 { value: "+200", label: "casos de éxito" },
-                { value: "Speaker", label: "& formador de alto impacto" },
+                { value: "10+", label: "eventos como speaker y formador" },
               ].map((s, i) => (
                 <div key={i} className="flex flex-col">
                   <span className="font-black tracking-tighter leading-none text-white" style={{ fontSize: "clamp(1.4rem, 3vw, 2.5rem)" }}>
