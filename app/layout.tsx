@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     description: "Transformá tu cuerpo. Recuperá tu energía. Volvé a confiar en vos.",
     url: "https://nahuelcoach-nu.vercel.app",
     siteName: "Nahuel Coach",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Nahuel Fitness Coach" }],
+    images: [{ url: "https://nahuelcoach-nu.vercel.app/og-image.png", width: 1200, height: 630, alt: "Nahuel Fitness Coach" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Nahuel Coach | Entrenamiento Premium",
     description: "Transformá tu cuerpo. Recuperá tu energía. Volvé a confiar en vos.",
-    images: ["/og-image.png"],
+    images: ["https://nahuelcoach-nu.vercel.app/og-image.png"],
   },
 };
 

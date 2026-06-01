@@ -24,16 +24,19 @@ const galleryImages = [
     category: "Fuerza",
     title: "Entrenamiento de Poder",
     url: "/gallery_fuerza.jpg",
+    bgPos: "center 15%",
   },
   {
     category: "Calistenia",
     title: "Dominio Corporal",
     url: "/gallery_calistenia.jpg",
+    bgPos: "center center",
   },
   {
     category: "Mindset",
     title: "Liderazgo Personal",
     url: "/ice_bath.jpg",
+    bgPos: "center center",
   },
 ];
 
@@ -256,8 +259,8 @@ export default function AboutSection() {
               className="group relative h-64 lg:h-80 overflow-hidden rounded-3xl cursor-default border border-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
             >
               <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('${img.url}')` }}
+                className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('${img.url}')`, backgroundPosition: img.bgPos }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050509]/95 via-[#050509]/30 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0066FF]/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
