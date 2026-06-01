@@ -23,12 +23,12 @@ const galleryImages = [
   {
     category: "Fuerza",
     title: "Entrenamiento de Poder",
-    url: "/beach_flex.jpg",
+    url: "/gallery_fuerza.jpg",
   },
   {
     category: "Calistenia",
     title: "Dominio Corporal",
-    url: "/handstand.png",
+    url: "/gallery_calistenia.jpg",
   },
   {
     category: "Mindset",
@@ -50,7 +50,7 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const bioImage = "/conference.jpg";
+  const bioImage = "/about_portrait.jpg";
 
   return (
     <section

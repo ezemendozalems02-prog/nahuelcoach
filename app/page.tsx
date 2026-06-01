@@ -5,7 +5,6 @@ import TransitionPhrase from "@/components/TransitionPhrase";
 import ImpactoSection from "@/components/ImpactoSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CommunitySection from "@/components/CommunitySection";
-import TrustSection from "@/components/TrustSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 
@@ -33,10 +32,7 @@ export default function Home() {
       {/* 9. COMUNIDAD GRATUITA DE WHATSAPP */}
       <CommunitySection />
 
-      {/* 10. SECCIÓN DE CONFIANZA */}
-      <TrustSection />
-
-      {/* 11. PREGUNTAS FRECUENTES (FAQ) */}
+      {/* 10. PREGUNTAS FRECUENTES (FAQ) */}
       <FAQSection />
 
       {/* 12. CTA FINAL */}
