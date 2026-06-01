@@ -104,12 +104,6 @@ function MarqueeStrip() {
   );
 }
 
-const stats = [
-  { value: "10 Años", label: "entrenando su cuerpo" },
-  { value: "+200", label: "casos de éxito" },
-  { value: "+10 eventos", label: "Formador y speaker" },
-];
-
 export default function Hero() {
   const { scrollY } = useScroll();
   const bgScale = useTransform(scrollY, [0, 600], [1, 1.06]);
@@ -257,40 +251,10 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.75 }}
-              className="text-white/55 text-sm sm:text-base font-medium mb-12 tracking-wide"
+              className="text-white/55 text-sm sm:text-base font-medium tracking-wide"
             >
               ⚡ Elegí cómo querés empezar: con una rutina, un recurso digital o un proceso personalizado.
             </motion.p>
-
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.85 }}
-              className="flex gap-10 lg:gap-14 border-t border-white/5 pt-8"
-            >
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20,
-                    delay: 0.85 + i * 0.08,
-                  }}
-                >
-                  <div
-                    className="font-black tracking-tighter leading-none text-white mb-1"
-                    style={{ fontSize: "clamp(1.8rem, 3vw, 2.75rem)" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-white/35 text-xs font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
         </div>
       </div>

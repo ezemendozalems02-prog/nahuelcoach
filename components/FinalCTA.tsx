@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { getSettings } from "@/lib/data-service";
 
 export default function FinalCTA() {
-  const [whatsapp, setWhatsapp] = useState("5491100000000");
+  const [whatsapp, setWhatsapp] = useState("541136361630");
 
   useEffect(() => {
     async function loadWhatsapp() {

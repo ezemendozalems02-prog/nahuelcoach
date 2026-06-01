@@ -269,7 +269,7 @@ export const seedFAQs: FAQ[] = [
 ];
 
 export const seedSiteSettings: SiteSettings = {
-  whatsappNumber: "5491100000000",
+  whatsappNumber: "541136361630",
   instagramUrl: "https://instagram.com/nahuelcoach",
   youtubeUrl: "https://youtube.com/nahuelcoach",
   brandName: "NAHUEL COACH",

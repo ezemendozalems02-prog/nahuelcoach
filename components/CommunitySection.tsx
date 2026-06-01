@@ -16,7 +16,7 @@ const benefits = [
 ];
 
 export default function CommunitySection() {
-  const [whatsapp, setWhatsapp] = useState("5491100000000");
+  const [whatsapp, setWhatsapp] = useState("541136361630");
 
   useEffect(() => {
     async function loadWhatsapp() {

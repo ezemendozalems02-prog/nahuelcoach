@@ -26,7 +26,7 @@ function spring(delay = 0) {
 }
 
 export default function ImpactoSection() {
-  const [whatsapp, setWhatsapp] = useState("5491100000000");
+  const [whatsapp, setWhatsapp] = useState("541136361630");
 
   useEffect(() => {
     async function loadSettings() {

@@ -38,7 +38,7 @@ export default function Footer() {
   const youtubeLink = settings?.youtubeUrl || "https://youtube.com/nahuelcoach";
   const whatsappLink = settings?.whatsappNumber 
     ? `https://wa.me/${settings.whatsappNumber}` 
-    : "https://wa.me/5491100000000";
+    : "https://wa.me/541136361630";
 
   const dynamicSocials = [
     { icon: InstagramIcon, href: instagramLink, label: "Instagram", color: "#E1306C" },

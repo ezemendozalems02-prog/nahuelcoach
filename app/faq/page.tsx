@@ -275,7 +275,7 @@ export default function FAQPage() {
             </p>
           </div>
           <a
-            href="https://wa.me/5491100000000"
+            href="https://wa.me/541136361630"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl btn-ghost text-sm font-semibold flex-shrink-0"

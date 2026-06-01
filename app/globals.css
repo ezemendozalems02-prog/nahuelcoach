@@ -21,9 +21,17 @@ html {
 }
 
 body {
-  background-color: #16161e;
-  background-image: radial-gradient(rgba(255,255,255,0.013) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-color: #1b1b24;
+  background-image:
+    repeating-linear-gradient(
+      -60deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255,255,255,0.006) 2px,
+      rgba(255,255,255,0.006) 3px
+    ),
+    linear-gradient(160deg, #1e1e2a 0%, #161620 50%, #1c1c26 100%);
+  background-attachment: fixed;
   color: #F8F9FF;
   font-family: var(--font-outfit);
   overflow-x: hidden;

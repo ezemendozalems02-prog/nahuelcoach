@@ -81,7 +81,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       `Hola Nahuel! 👋\n\nQuiero comprar:\n${itemsList}\n\n💰 Total: $${total.toLocaleString("es-AR")} ARS\n\nMi nombre:\nMi objetivo principal:\n\n¿Podemos coordinar?`
     );
     const settings = typeof window !== "undefined" ? getSettingsFromStorage() : null;
-    const whatsappNum = settings?.whatsappNumber || "5491100000000";
+    const whatsappNum = settings?.whatsappNumber || "541136361630";
     window.open(`https://wa.me/${whatsappNum}?text=${message}`, "_blank");
   }, [items, total]);
 

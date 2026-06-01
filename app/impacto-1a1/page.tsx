@@ -93,106 +93,122 @@ export default function ImpactoPage() {
 
   return (
     <div className="min-h-screen bg-black pt-20">
-      {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1920&q=80')" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/70 to-black" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,102,255,0.15)_0%,transparent_70%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(123,47,255,0.06)_0%,transparent_60%)]" />
-        </div>
+      {/* HERO — VSL + Copy */}
+      <section className="relative bg-black pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(0,102,255,0.08)_0%,transparent_60%)]" />
 
-        {/* Glow orbs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[#0066FF]/10 blur-[120px] pointer-events-none" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-10">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20 flex flex-col items-center justify-center min-h-[80vh] w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center"
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-[#0066FF] text-[11px] font-bold tracking-[0.35em] uppercase mb-4 text-center"
           >
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-[#0066FF] text-sm font-semibold tracking-[0.3em] uppercase mb-6 text-center"
-            >
-              Mentoría Personal Premium
-            </motion.p>
+            Mentoría Personal — Impacto Fitness
+          </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-responsive-3xl text-white leading-[0.95] tracking-tight mb-6 text-center"
-            >
-              Impacto{" "}
-              <span className="gradient-text">1 a 1</span>
-            </motion.h1>
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="font-black tracking-tight leading-none text-white text-center mb-8"
+            style={{ fontSize: "clamp(2.2rem, 6vw, 4rem)" }}
+          >
+            Impacto <span className="gradient-text">1 a 1</span>
+          </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-white/60 text-xl leading-relaxed max-w-2xl mb-10 font-light text-center mx-auto"
-            >
-              Una mentoría personalizada para transformar tu{" "}
-              <span className="text-white font-medium">físico</span>,{" "}
-              <span className="text-[#00CCFF] font-medium">hábitos</span> y{" "}
-              <span className="gradient-text font-medium">mentalidad.</span>{" "}
-              No es un programa. Es tu programa.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap justify-center gap-4 w-full"
-            >
-              <a
-                href="https://wa.me/5491100000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl btn-primary text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)] transition-all duration-300"
+          {/* VSL Placeholder */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="relative w-full rounded-2xl overflow-hidden border border-white/8 mb-10"
+            style={{
+              aspectRatio: "16/9",
+              background: "linear-gradient(135deg, #0d0d18 0%, #0a0a14 100%)",
+              boxShadow: "0 0 60px rgba(0,102,255,0.1), 0 30px 60px rgba(0,0,0,0.5)",
+            }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0066FF]/40 to-transparent" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+              <div
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center"
+                style={{
+                  background: "rgba(0,102,255,0.15)",
+                  border: "2px solid rgba(0,102,255,0.4)",
+                  boxShadow: "0 0 40px rgba(0,102,255,0.25)",
+                }}
               >
-                Aplicar ahora
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="https://wa.me/5491100000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl btn-ghost font-semibold text-white/80 hover:text-white"
-              >
-                <MessageCircle size={18} />
-                Hablar por WhatsApp
-              </a>
-            </motion.div>
-
-            {/* Quick stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
-              className="flex flex-wrap justify-center gap-8 lg:gap-12 mt-12 w-full"
-            >
-              {[
-                { val: "500+", label: "Alumnos transformados" },
-                { val: "98%", label: "Tasa de resultados" },
-                { val: "5+", label: "Años de experiencia" },
-              ].map((s) => (
-                <div key={s.label} className="text-center flex flex-col items-center">
-                  <div className="text-2xl font-black gradient-text-blue">{s.val}</div>
-                  <div className="text-white/40 text-xs mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </motion.div>
+                <div
+                  className="w-0 h-0 ml-1.5"
+                  style={{
+                    borderTop: "12px solid transparent",
+                    borderBottom: "12px solid transparent",
+                    borderLeft: "20px solid rgba(0,204,255,0.9)",
+                  }}
+                />
+              </div>
+              <span className="text-white/25 text-xs font-semibold tracking-[0.3em] uppercase">Video próximamente</span>
+            </div>
+            <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 border border-white/10">
+              <span className="text-white/40 text-[10px] font-bold tracking-widest uppercase">VSL</span>
+            </div>
           </motion.div>
+
+          {/* Copy */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col gap-5 text-white/65 text-base sm:text-lg leading-relaxed font-light"
+          >
+            <p>
+              <span className="text-[#00CCFF] font-semibold">Impacto Fitness 1 a 1</span> es una mentoría personalizada para transformar tu cuerpo desde una raíz más profunda: identidad, hábitos, mentalidad y energía.
+            </p>
+            <p>
+              No se trata solo de entrenar más o comer mejor. Se trata de dejar de operar desde la versión que se abandona, se posterga o pierde dirección, y empezar a construir una estructura interna que puedas sostener en tu vida real.
+            </p>
+            <p>
+              Durante el proceso trabajamos tu entrenamiento, alimentación, organización, disciplina, autoimagen y patrones de comportamiento para que puedas verte mejor, sentirte con más energía y volver a confiar en vos.
+            </p>
+            <p className="border-l-2 border-[#0066FF]/50 pl-4 text-white/50 italic">
+              Si sentís que ya intentaste muchas veces, pero nunca lograste sostenerlo, este puede ser el camino para dejar de empezar de cero.
+            </p>
+            <p className="text-white/80 font-medium">
+              Aplicá a la mentoría y veamos juntos si este proceso es para tu momento.
+            </p>
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65 }}
+            className="flex flex-col sm:flex-row gap-4 mt-10"
+          >
+            <a
+              href="https://wa.me/541136361630"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl btn-primary text-white font-bold text-base shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)] transition-all duration-300"
+            >
+              Aplicar ahora
+              <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="https://wa.me/541136361630"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl btn-ghost font-semibold text-white/80 hover:text-white text-base"
+            >
+              <MessageCircle size={17} />
+              Hablar por WhatsApp
+            </a>
+          </motion.div>
+
         </div>
       </section>
 
@@ -564,7 +580,7 @@ export default function ImpactoPage() {
             
             <div className="flex flex-wrap gap-4 justify-center">
               <a
-                href="https://wa.me/5491100000000"
+                href="https://wa.me/541136361630"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 px-10 py-5 rounded-2xl btn-primary text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)] transition-all duration-300"

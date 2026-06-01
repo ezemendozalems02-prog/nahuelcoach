@@ -144,7 +144,7 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
           </div>
           <div className="flex gap-2">
             <a
-              href={`https://wa.me/5491100000000?text=${whatsappMsg}`}
+              href={`https://wa.me/541136361630?text=${whatsappMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl btn-ghost text-sm font-semibold"
@@ -339,7 +339,7 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
                 Agregar al carrito
               </button>
               <a
-                href={`https://wa.me/5491100000000?text=${whatsappMsg}`}
+                href={`https://wa.me/541136361630?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl btn-ghost font-semibold text-sm"
@@ -379,7 +379,7 @@ export default function ProgramDetailClient({ program }: { program: Program }) {
               Agregar al carrito — ${program.price.toLocaleString("es-AR")} ARS
             </button>
             <a
-              href={`https://wa.me/5491100000000?text=${whatsappMsg}`}
+              href={`https://wa.me/541136361630?text=${whatsappMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl btn-ghost font-semibold"
