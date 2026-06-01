@@ -30,6 +30,7 @@ const testimonials: Testimonial[] = [
     tag: "Más energía",
     text: "El acompañamiento va mucho más allá de una rutina. Hoy entreno con una estructura que disfruto sostener y que se adapta a mi vida.",
     avatar: "SR",
+    photo: "/testimonio_sofia.jpg",
   },
   {
     name: "Mateo G.",

@@ -71,7 +71,7 @@ export default function Header() {
             <img
               src="/logo.png"
               alt="Nahuel Fitness Coach"
-              className="h-14 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
@@ -109,7 +109,7 @@ export default function Header() {
           {/* Right actions */}
           <div className="flex items-center gap-3">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/nahuel.coach/"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex w-9 h-9 items-center justify-center rounded-lg text-white/50 hover:text-[#E1306C] hover:bg-white/5 transition-all duration-300"
@@ -210,7 +210,7 @@ export default function Header() {
               </nav>
               <div className="p-4 border-t border-white/5 flex flex-col gap-3">
                 <div className="flex gap-3 justify-center">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 rounded-xl bg-white/5 text-white/60 hover:text-[#E1306C] transition-all flex items-center justify-center gap-2 text-sm">
+                  <a href="https://www.instagram.com/nahuel.coach/" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 rounded-xl bg-white/5 text-white/60 hover:text-[#E1306C] transition-all flex items-center justify-center gap-2 text-sm">
                     <InstagramIcon size={16} /> Instagram
                   </a>
                   <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 rounded-xl bg-white/5 text-white/60 hover:text-[#FF0000] transition-all flex items-center justify-center gap-2 text-sm">

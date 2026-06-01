@@ -4,6 +4,7 @@ import { CartProvider } from "@/context/CartContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import FloatingInstagram from "@/components/FloatingInstagram";
 
 export const metadata: Metadata = {
   title: "Nahuel Coach | Entrenamiento Premium",
@@ -25,6 +26,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <CartDrawer />
+          <FloatingInstagram />
         </CartProvider>
       </body>
     </html>

@@ -34,7 +34,7 @@ export default function Footer() {
   const brandFirst = brandParts[0] || "NAHUEL";
   const brandSecond = brandParts.slice(1).join(" ") || "COACH";
 
-  const instagramLink = settings?.instagramUrl || "https://instagram.com/nahuelcoach";
+  const instagramLink = settings?.instagramUrl || "https://www.instagram.com/nahuel.coach/";
   const youtubeLink = settings?.youtubeUrl || "https://youtube.com/nahuelcoach";
   const whatsappLink = settings?.whatsappNumber 
     ? `https://wa.me/${settings.whatsappNumber}` 
