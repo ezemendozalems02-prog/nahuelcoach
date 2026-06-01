@@ -8,7 +8,6 @@ import {
   ShoppingCart,
   Menu,
   X,
-  Zap,
 } from "lucide-react";
 import { InstagramIcon, YoutubeIcon } from "@/components/SocialIcons";
 import { useCart } from "@/context/CartContext";
@@ -53,10 +52,6 @@ export default function Header() {
     return null;
   }
 
-  const brand = settings?.brandName || "NAHUEL COACH";
-  const brandParts = brand.split(" ");
-  const brandFirst = brandParts[0] || "NAHUEL";
-  const brandSecond = brandParts.slice(1).join(" ") || "COACH";
 
   return (
     <>
@@ -72,18 +67,12 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between gap-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div className="relative w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0066FF] to-[#00CCFF] shadow-[0_0_20px_rgba(0,102,255,0.4)] group-hover:shadow-[0_0_30px_rgba(0,102,255,0.6)] transition-all duration-300">
-              <Zap size={18} className="text-white fill-white" />
-            </div>
-            <div>
-              <span className="text-white font-bold text-lg tracking-tight leading-none block uppercase">
-                {brandFirst}
-              </span>
-              <span className="gradient-text-cyan text-[10px] font-semibold tracking-[0.2em] uppercase leading-none block">
-                {brandSecond}
-              </span>
-            </div>
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <img
+              src="/logo.png"
+              alt="Nahuel Fitness Coach"
+              className="h-12 w-auto rounded-xl"
+            />
           </Link>
 
           {/* Nav - desktop */}
@@ -199,7 +188,7 @@ export default function Header() {
               className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-[#0a0a0f] border-l border-white/5 flex flex-col lg:hidden"
             >
               <div className="flex items-center justify-between p-6 border-b border-white/5">
-                <span className="gradient-text font-bold text-lg">NAHUEL COACH</span>
+                <img src="/logo.png" alt="Nahuel Fitness Coach" className="h-9 w-auto rounded-xl" />
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="w-8 h-8 flex items-center justify-center rounded-lg text-white/50 hover:text-white"

@@ -2,12 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  Brain,
-  Target,
-  Dumbbell,
-  LineChart,
-  Compass,
-  TrendingUp,
   CheckCircle2,
   ArrowRight,
   MessageCircle,
@@ -23,14 +17,6 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 
-const pillars = [
-  { icon: Brain, title: "Mentalidad de élite", desc: "Desarrollá la fortaleza mental que distingue a los campeones y transforma cada obstáculo en combustible.", color: "#7B2FFF", glow: "#7B2FFF" },
-  { icon: Target, title: "Hábitos poderosos", desc: "Construí rutinas diarias que transformen tu vida de forma permanente y sostenible.", color: "#0066FF", glow: "#0066FF" },
-  { icon: Compass, title: "Disciplina real", desc: "La disciplina constante y sistemática que convierte metas ambiciosas en resultados concretos.", color: "#00CCFF", glow: "#00CCFF" },
-  { icon: LineChart, title: "Seguimiento preciso", desc: "Control semana a semana de cada métrica de tu progreso. Nada queda al azar.", color: "#0066FF", glow: "#0066FF" },
-  { icon: Dumbbell, title: "Estrategia física", desc: "Plan de entrenamiento y nutrición 100% diseñado para tu cuerpo, objetivos y estilo de vida.", color: "#7B2FFF", glow: "#7B2FFF" },
-  { icon: TrendingUp, title: "Evolución continua", desc: "Progresión constante hacia tu mejor versión, ajustada semana a semana con Nahuel.", color: "#00CCFF", glow: "#00CCFF" },
-];
 
 const steps = [
   { num: "01", title: "Aplicación", desc: "Completás el formulario de aplicación con tus objetivos, experiencia, disponibilidad y lo que querés lograr.", detail: "Sin compromiso. Gratis." },
@@ -212,6 +198,100 @@ export default function ImpactoPage() {
         </div>
       </section>
 
+      {/* Road Map del Proceso */}
+      <section className="relative py-20 lg:py-28 bg-[#030307] overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0066FF]/20 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#0066FF]/3 blur-[140px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div {...fadeUp()} className="text-center mb-12 lg:mb-16">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4 bg-[#0066FF]/5 border border-[#0066FF]/15">
+              <span className="text-[#00CCFF] text-[10px] font-bold tracking-[0.3em] uppercase">Road Map del Proceso</span>
+            </div>
+            <h2 className="text-white font-black tracking-tight leading-none mb-3" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}>
+              Un sistema estructurado que opera<br />
+              <span className="gradient-text">sobre todas las áreas de tu ser</span>
+            </h2>
+            <p className="text-white/45 text-sm sm:text-base font-light max-w-[52ch] mx-auto">
+              Sesiones semanales con seguimiento diario y tareas específicas entre cada encuentro.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+            {[
+              { mes: "MES 1", title: "Reconexión y Orden", sub: "Vuelvo al cuerpo y recupero energía", color: "#0066FF", border: "border-[#0066FF]/20", bg: "bg-[#0066FF]/5" },
+              { mes: "MES 2", title: "Reprogramación & Identidad", sub: "Trabajo las raíces del comportamiento", color: "#7B2FFF", border: "border-[#7B2FFF]/25", bg: "bg-[#7B2FFF]/5" },
+              { mes: "MES 3", title: "Integración y Acción de No Retorno", sub: "Soy la persona que actúa", color: "#00CCFF", border: "border-[#00CCFF]/20", bg: "bg-[#00CCFF]/5" },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp(i * 0.1)}
+                className={`relative p-7 sm:p-8 rounded-3xl border ${item.border} ${item.bg} backdrop-blur-xl flex flex-col gap-4`}
+                style={{ boxShadow: "0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)" }}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="font-black text-4xl leading-none tracking-tighter" style={{ color: item.color }}>
+                    {i + 1}
+                  </span>
+                  <span className="text-[10px] font-black tracking-[0.3em] uppercase px-2.5 py-1 rounded-full border" style={{ color: item.color, borderColor: `${item.color}30`, background: `${item.color}10` }}>
+                    {item.mes}
+                  </span>
+                </div>
+                <h3 className="text-white font-bold text-lg sm:text-xl leading-snug">{item.title}</h3>
+                <p className="text-white/45 text-sm font-light italic border-l-2 pl-3" style={{ borderColor: `${item.color}40` }}>{item.sub}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lo que vas a obtener */}
+      <section className="relative py-20 lg:py-28 bg-black overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[400px] rounded-full bg-[#7B2FFF]/3 blur-[140px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+          <motion.div {...fadeUp()} className="text-center mb-12">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4 bg-[#7B2FFF]/5 border border-[#7B2FFF]/15">
+              <Sparkles size={12} className="text-[#b685ff]" />
+              <span className="text-[#b685ff] text-[10px] font-bold tracking-[0.3em] uppercase">Contenido del Programa</span>
+            </div>
+            <h2 className="text-white font-black tracking-tight leading-none" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}>
+              Lo que vas a <span className="gradient-text">obtener</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              "Diagnóstico inicial completo",
+              "Fundamentos y principios de la transformación",
+              "Entrenamiento y mentalidad integrados",
+              "Metabolismo y alimentación consciente",
+              "Niveles de consciencia y autoconocimiento",
+              "Hábitos y reprogramación profunda",
+              "Organización estratégica de tu vida",
+              "Orden emocional y gestión interna",
+              "Energía y auto-liderazgo",
+              "Romper imagen — Acción de no retorno",
+              "El verdadero poder de sostener",
+              "Anclaje emocional del proceso",
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                className="flex gap-3 items-start p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-[#7B2FFF]/25 transition-all"
+              >
+                <CheckCircle2 size={14} className="text-[#7B2FFF] flex-shrink-0 mt-0.5" />
+                <span className="text-white/70 text-sm font-light leading-relaxed">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features strip */}
       <section className="relative border-t border-b border-white/5 bg-[#050508] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(0,102,255,0.05)_0%,transparent_70%)]" />
@@ -241,98 +321,6 @@ export default function ImpactoPage() {
           </div>
         </div>
       </section>
-
-      {/* Pillars */}
-      <section className="relative py-36 lg:py-44 overflow-hidden bg-black">
-        {/* Glow orbs for pillars */}
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#7B2FFF]/5 blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] rounded-full bg-[#0066FF]/5 blur-[150px] pointer-events-none" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div {...fadeUp()} className="text-center mb-20 lg:mb-24">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4"
-              style={{
-                background: "rgba(0,102,255,0.06)",
-                border: "1px solid rgba(0,102,255,0.18)",
-              }}
-            >
-              <Sparkles size={12} className="text-[#00CCFF]" />
-              <span className="text-[#00CCFF] text-[10px] font-bold tracking-[0.3em] uppercase">Metodología Nahuel Coach</span>
-            </div>
-            <h2 className="text-responsive-xl text-white font-black tracking-tight leading-none">
-              Los <span className="gradient-text">6 Pilares</span> del Impacto
-            </h2>
-            <p className="text-white/45 text-base sm:text-lg font-light leading-relaxed mt-4 max-w-[50ch] mx-auto">
-              Una estructura integral diseñada minuciosamente para garantizar tu éxito físico, mental y de hábitos.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            {pillars.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  key={p.title}
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20,
-                    delay: i * 0.1,
-                  }}
-                  whileHover={{ y: -8, scale: 1.01 }}
-                  className="group relative rounded-3xl overflow-hidden p-8 hover:border-[#0066FF]/40 transition-all duration-500 cursor-default"
-                  style={{
-                    background: "rgba(10, 10, 15, 0.7)",
-                    border: "1px solid rgba(255, 255, 255, 0.05)",
-                    boxShadow: "0 15px 35px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03)",
-                    backdropFilter: "blur(15px)",
-                  }}
-                >
-                  {/* Hover background glow container */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(circle at 50% 50%, ${p.color}0b 0%, transparent 70%)`
-                    }}
-                  />
-
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
-                    style={{
-                      background: `${p.color}15`,
-                      border: `1px solid ${p.color}28`,
-                      boxShadow: `0 0 30px ${p.glow}12`
-                    }}
-                  >
-                    <Icon size={24} style={{ color: p.color }} />
-                  </div>
-                  
-                  <h3 className="text-white font-bold text-xl mb-3 group-hover:text-[#00CCFF] transition-colors duration-300">
-                    {p.title}
-                  </h3>
-                  
-                  <p className="text-white/50 text-sm leading-relaxed font-light">
-                    {p.desc}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Elegant divider */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 bg-black">
-        <div 
-          className="h-px w-full"
-          style={{
-            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.05), rgba(0,102,255,0.15), rgba(255,255,255,0.05), transparent)"
-          }}
-        />
-      </div>
 
       {/* How it works */}
       <section className="relative py-36 lg:py-44 overflow-hidden bg-[#030307]">
@@ -580,12 +568,12 @@ export default function ImpactoPage() {
             
             <div className="flex flex-wrap gap-4 justify-center">
               <a
-                href="https://wa.me/541136361630"
+                href="https://calendly.com/fitcoach-nahuel/informacion-asesorias"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 px-10 py-5 rounded-2xl btn-primary text-white font-bold text-lg shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)] transition-all duration-300"
               >
-                Aplicar ahora — Es gratis
+                Agendar llamada de diagnóstico
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </div>

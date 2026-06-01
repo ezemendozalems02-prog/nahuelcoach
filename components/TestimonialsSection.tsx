@@ -10,6 +10,7 @@ interface Testimonial {
   tag: string;
   text: string;
   avatar: string;
+  photo?: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -20,6 +21,7 @@ const testimonials: Testimonial[] = [
     tag: "Cambio físico real",
     text: "Llegué sin constancia y sin claridad. Con el proceso pude ordenar mi entrenamiento, mejorar mi alimentación y volver a confiar en mí.",
     avatar: "CM",
+    photo: "/testimonio_hombre2.jpg",
   },
   {
     name: "Sofía R.",
@@ -32,10 +34,11 @@ const testimonials: Testimonial[] = [
   {
     name: "Mateo G.",
     role: "Desarrollador",
-    result: "+6kg de masa muscular en 4 meses",
+    result: "-15kg en 3 meses de proceso",
     tag: "Recuperó confianza",
     text: "Pasé años improvisando y abandonando. El método me dio la estructura exacta que necesitaba para ser constante de verdad.",
     avatar: "MG",
+    photo: "/testimonio_mujer.jpg",
   },
 ];
 
@@ -127,8 +130,44 @@ export default function TestimonialsSection() {
 
               {/* Before / After fotos */}
               <div className="grid grid-cols-2 gap-2.5">
-                <PhotoPlaceholder label="Antes" />
-                <PhotoPlaceholder label="Después" accent />
+                {t.photo ? (
+                  <>
+                    <div className="flex flex-col gap-1.5">
+                      <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/8">
+                        <div
+                          className="absolute inset-0"
+                          style={{
+                            backgroundImage: `url('${t.photo}')`,
+                            backgroundPosition: "left center",
+                            backgroundSize: "200% 100%",
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      </div>
+                      <span className="text-center text-[10px] font-bold tracking-[0.3em] uppercase text-white/25">Antes</span>
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#0066FF]/25">
+                        <div
+                          className="absolute inset-0"
+                          style={{
+                            backgroundImage: `url('${t.photo}')`,
+                            backgroundPosition: "right center",
+                            backgroundSize: "200% 100%",
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0066FF] to-[#00CCFF]" />
+                      </div>
+                      <span className="text-center text-[10px] font-bold tracking-[0.3em] uppercase text-[#00CCFF]/60">Después</span>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <PhotoPlaceholder label="Antes" />
+                    <PhotoPlaceholder label="Después" accent />
+                  </>
+                )}
               </div>
 
               {/* Tag de resultado */}
