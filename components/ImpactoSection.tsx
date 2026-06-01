@@ -352,7 +352,7 @@ export default function ImpactoSection() {
 
               <div className="pt-4 border-t border-white/5 flex flex-col gap-2">
                 <a
-                  href={whatsappMentoriaMsg}
+                  href="https://calendly.com/fitcoach-nahuel/informacion-asesorias"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-[#b685ff] border border-[#7B2FFF]/30 bg-[#7B2FFF]/5 hover:bg-[#7B2FFF]/10 transition-all font-bold text-sm"

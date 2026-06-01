@@ -18,12 +18,6 @@ const certifications = [
   "Coach Personal especializado en gestión emocional y Programación Neurolingüística (PNL)."
 ];
 
-const stats = [
-  { value: "10 Años", label: "de disciplina propia", sub: "entrenamiento constante" },
-  { value: "4+ Años", label: "coacheando atletas", sub: "metodología probada" },
-  { value: "100%", label: "integral y digital", sub: "sostenible en el tiempo" },
-  { value: "500+", label: "vidas transformadas", sub: "enfoque de identidad" },
-];
 
 const galleryImages = [
   {
@@ -297,37 +291,6 @@ export default function AboutSection() {
           <span className="text-white/25 text-[9px] font-bold tracking-[0.4em] uppercase block">
             — Nahuel Coach — Impacto Fitness
           </span>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={spring()}
-          className="border-t border-white/5 pt-20 lg:pt-24 stats-block"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.08 }}
-                className={`flex flex-col ${i < stats.length - 1 ? "lg:border-r lg:border-white/5" : ""} lg:pr-8`}
-              >
-                <span
-                  className="font-black tracking-tighter leading-none text-white mb-2"
-                  style={{ fontSize: "clamp(2.5rem, 4.5vw, 4.5rem)" }}
-                >
-                  {stat.value}
-                </span>
-                <span className="text-white/55 text-sm font-semibold">{stat.label}</span>
-                <span className="text-white/25 text-xs mt-0.5">{stat.sub}</span>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
       </div>

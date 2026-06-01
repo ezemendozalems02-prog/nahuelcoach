@@ -255,6 +255,27 @@ export default function Hero() {
             >
               ⚡ Elegí cómo querés empezar: con una rutina, un recurso digital o un proceso personalizado.
             </motion.p>
+
+            {/* Stats row */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, type: "spring", stiffness: 80, damping: 20 }}
+              className="flex items-center gap-8 sm:gap-14 pt-6 border-t border-white/5 mt-2"
+            >
+              {[
+                { value: "10 Años", label: "entrenando su cuerpo" },
+                { value: "+200", label: "casos de éxito" },
+                { value: "Speaker", label: "& formador de alto impacto" },
+              ].map((s, i) => (
+                <div key={i} className="flex flex-col">
+                  <span className="font-black tracking-tighter leading-none text-white" style={{ fontSize: "clamp(1.4rem, 3vw, 2.5rem)" }}>
+                    {s.value}
+                  </span>
+                  <span className="text-white/35 text-[10px] sm:text-xs font-medium mt-0.5">{s.label}</span>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>

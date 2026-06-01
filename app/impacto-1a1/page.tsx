@@ -190,22 +190,22 @@ export default function ImpactoPage() {
             className="flex flex-col sm:flex-row gap-4 mt-10"
           >
             <a
-              href="https://wa.me/541136361630"
+              href="https://calendly.com/fitcoach-nahuel/informacion-asesorias"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl btn-primary text-white font-bold text-base shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_35px_rgba(0,102,255,0.5)] transition-all duration-300"
             >
-              Aplicar ahora
+              Agendar llamada de diagnóstico
               <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="https://wa.me/541136361630"
+              href="https://calendly.com/fitcoach-nahuel/informacion-asesorias"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl btn-ghost font-semibold text-white/80 hover:text-white text-base"
             >
               <MessageCircle size={17} />
-              Hablar por WhatsApp
+              Ver disponibilidad
             </a>
           </motion.div>
 
