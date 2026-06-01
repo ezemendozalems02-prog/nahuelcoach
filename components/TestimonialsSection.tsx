@@ -11,6 +11,7 @@ interface Testimonial {
   text: string;
   avatar: string;
   photo?: string;
+  avatarImg?: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -129,60 +130,54 @@ export default function TestimonialsSection() {
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0066FF]/30 to-transparent" />
 
-              {/* Before / After fotos */}
-              <div className="grid grid-cols-2 gap-2.5">
-                {t.photo ? (
-                  <>
-                    <div className="flex flex-col gap-1.5">
-                      <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/8">
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            backgroundImage: `url('${t.photo}')`,
-                            backgroundPosition: "left center",
-                            backgroundSize: "200% 100%",
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                      </div>
-                      <span className="text-center text-[10px] font-bold tracking-[0.3em] uppercase text-white/25">Antes</span>
+              {/* Before / After fotos o avatar quote */}
+              {t.photo ? (
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/8">
+                      <div className="absolute inset-0" style={{ backgroundImage: `url('${t.photo}')`, backgroundPosition: "left center", backgroundSize: "200% 100%" }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     </div>
-                    <div className="flex flex-col gap-1.5">
-                      <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#0066FF]/25">
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            backgroundImage: `url('${t.photo}')`,
-                            backgroundPosition: "right center",
-                            backgroundSize: "200% 100%",
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0066FF] to-[#00CCFF]" />
-                      </div>
-                      <span className="text-center text-[10px] font-bold tracking-[0.3em] uppercase text-[#00CCFF]/60">Después</span>
+                    <span className="text-center text-[10px] font-bold tracking-[0.3em] uppercase text-white/25">Antes</span>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#0066FF]/25">
+                      <div className="absolute inset-0" style={{ backgroundImage: `url('${t.photo}')`, backgroundPosition: "right center", backgroundSize: "200% 100%" }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0066FF] to-[#00CCFF]" />
                     </div>
-                  </>
-                ) : (
-                  <>
-                    <PhotoPlaceholder label="Antes" />
-                    <PhotoPlaceholder label="Después" accent />
-                  </>
-                )}
-              </div>
+                    <span className="text-center text-[10px] font-bold tracking-[0.3em] uppercase text-[#00CCFF]/60">Después</span>
+                  </div>
+                </div>
+              ) : t.avatarImg ? (
+                <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/6">
+                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${t.avatarImg}')` }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+                  <div className="absolute bottom-3 left-4 flex gap-0.5">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star key={idx} size={11} className="text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-2.5">
+                  <PhotoPlaceholder label="Antes" />
+                  <PhotoPlaceholder label="Después" accent />
+                </div>
+              )}
 
               {/* Tag de resultado */}
               <div className="flex items-center justify-between">
-                <span
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.25em] uppercase border ${tagColors[t.tag]}`}
-                >
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.25em] uppercase border ${tagColors[t.tag]}`}>
                   {t.tag}
                 </span>
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} size={10} className="text-amber-400 fill-amber-400" />
-                  ))}
-                </div>
+                {!t.avatarImg && (
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star key={idx} size={10} className="text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Resultado principal */}
@@ -203,9 +198,15 @@ export default function TestimonialsSection() {
 
               {/* Avatar + nombre */}
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0066FF] to-[#00CCFF] flex items-center justify-center text-white font-extrabold text-xs shadow-[0_0_12px_rgba(0,102,255,0.3)] flex-shrink-0">
-                  {t.avatar}
-                </div>
+                {t.avatarImg ? (
+                  <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 border border-white/10">
+                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${t.avatarImg}')` }} />
+                  </div>
+                ) : (
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0066FF] to-[#00CCFF] flex items-center justify-center text-white font-extrabold text-xs shadow-[0_0_12px_rgba(0,102,255,0.3)] flex-shrink-0">
+                    {t.avatar}
+                  </div>
+                )}
                 <div>
                   <h4 className="text-white font-bold text-sm leading-tight">{t.name}</h4>
                   <span className="text-white/30 text-xs">{t.role}</span>

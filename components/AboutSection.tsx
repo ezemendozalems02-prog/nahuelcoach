@@ -196,7 +196,7 @@ export default function AboutSection() {
               transition={spring(0.25)}
             >
               <p className="text-white/25 text-[10px] font-bold tracking-[0.38em] uppercase mb-4">
-                Mi Trayectoria Pointers
+                Mi Trayectoria
               </p>
               <div className="flex flex-col gap-3">
                 {details.map((d, i) => (
