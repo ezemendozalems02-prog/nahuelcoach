@@ -7,7 +7,7 @@
 | # | Texto en la slide | Foto que necesito |
 |---|---|---|
 | 1 | **La gira que me cambió la <span>vida</span>.**<br><small>14 países · 14 sold outs · +20.000 personas</small> | Vos en el escenario o frente a la sala llena de La Cumbre: la más épica que tengas |
-| 2 | Hace 4 años entrenaba cuerpos.<br>No imaginaba que iba a terminar **liderando equipos en 14 países**. | Una foto tuya de antes (entrenando, gimnasio) o vos solo, pensativo |
+| 2 | Durante años entrené cuerpos.<br>No imaginaba que iba a terminar **liderando equipos en 14 países**. | Una foto tuya de antes (entrenando, gimnasio) o vos solo, pensativo |
 | 3 | Mientras miles de personas vivían su transformación en la sala…<br>**yo estaba atrás.** | Backstage: vos de espaldas mirando la sala, o entre bambalinas |
 | 4 | Aeropuertos. Valijas.<br>Un país nuevo, un equipo nuevo, **la misma misión**. | Viaje, aeropuerto, o un collage de banderas o ciudades |
 | 5 | Mi trabajo era ver lo que nadie veía.<br>**Que el equipo llegara entero** para que la sala viviera algo real. | Vos dando el briefing al staff (círculo, ronda, arenga) |
@@ -23,7 +23,7 @@
 
 ## Caption v2
 
-Hace 4 años entrenaba cuerpos.
+Durante años entrené cuerpos.
 
 Este año cerré en Guatemala la gira de desarrollo personal más grande de Latinoamérica. 14 países. 14 sold outs. Más de 20.000 personas.
 
